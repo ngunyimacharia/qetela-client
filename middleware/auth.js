@@ -11,10 +11,5 @@
       if(!hasToken){
         return redirect('/account/login')
       }
-      //Confirm user details
-      //If no user details, get them
     }
-    // if (!hasToken) {
-    //     error({errorCode:503, message:'You are not allowed to see this'})
-    // }
 }

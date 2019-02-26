@@ -55,6 +55,7 @@
         </div>
         <footer class="card-footer">
           <a v-if="credentials.username" v-on:click="login" class="card-footer-item">Login</a>
+          <a v-if="!credentials.username" class="card-footer-item has-text-black">Waiting for valid email</a>
           <!-- <a href="account/forgot-password" class="card-footer-item">Forgot password</a> -->
         </footer>
       </section>
@@ -115,17 +116,26 @@ export default {
         const res = await this.$apollo.query({
           query:  gql`query ($email: String!) {
             user(email:$email){
-              username
+              id,
+              username,
+              first_name,
+              last_name
             }
           }`,
           variables: {email:this.credentials.email}
         }).then(({data}) => {
           this.successfulUsername = true
           this.credentials.username = data.user.username
+          this.credentials.id = data.user.id
+          this.credentials.first_name = data.user.first_name
+          this.credentials.last_name = data.user.last_name
         })
       } catch (e) {
         this.successfulUsername = false
         this.credentials.username = ""
+        this.credentials.id = null
+        this.credentials.first_name = null
+        this.credentials.last_name = null
       }
     },
     async login () {
