@@ -9,6 +9,7 @@ export default {
     return {
       message:"Hello world"
     }
-  }
+  },
+  layout:'default',
 }
 </script>

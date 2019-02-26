@@ -1,5 +1,5 @@
 <template>
-  <h1 v-bind:title="message">{{ message }}</h1>
+  <!-- No information -->
 </template>
 
 <script>
@@ -7,8 +7,17 @@
 export default {
   data() {
     return {
-      message:"Hello world"
+      // No data
     }
-  }
+  },
+  mounted(){
+    if(this.$apolloHelpers.getToken()){
+      //Redirect to organisation dashboard
+      this.$router.replace('/organisation')
+    }else{
+      //Redirect to login
+      this.$router.replace('/account/login')
+    }
+  },
 }
 </script>

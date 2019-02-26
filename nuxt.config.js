@@ -70,5 +70,8 @@ export default {
       // alternative: user path to config which returns exact same config options
       test2: '~/plugins/my-alternative-apollo-config.js'
     }
+  },
+  router: {
+    middleware: ['auth']
   }
 }

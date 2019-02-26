@@ -1,12 +1,12 @@
 <template>
   <div class="columns is-centered">
-    <div class="column is-one-third">
-      <section class="card">
-
+    <div class="column is-one-third has-text-centered">
+      <img src="/images/logo.png" alt="Logo" title="Logo" class="logo">
+      <section class="card has-text-left">
         <header class="card-header">
-          <p class="card-header-title">
+          <h1 class="card-header-title">
             Login
-          </p>
+          </h1>
         </header>
         <div class="card-content">
           <form method="post">
@@ -21,10 +21,15 @@
                 <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
                 </span>
-                <span v-if="credentials.username" class="icon is-small is-right">
+                <span v-if="successfulUsername" class="icon is-small is-right">
                   <i class="fas fa-check"></i>
                 </span>
+                <span v-if="successfulUsername === false" class="icon is-small is-right">
+                  <i class="fas fa-times"></i>
+                </span>
               </p>
+               <p v-if="successfulUsername === false" class="help is-danger">This email is invalid</p>
+               <p v-if="successfulUsername" class="help is-success">This email is valid</p>
             </div>
             <div class="field">
               <input v-model="credentials.username" type="hidden">
@@ -37,16 +42,20 @@
                 </span>
               </p>
             </div>
-            <div class="field">
-              <p class="control has-icons-left">
-                Don't have an account? <a href="/account/signup">Sign-up</a>
+            <div class="field" v-if="randomUser">
+              <p class="is-size-7 has-text-left"> 
+                Try the following credentials:
+                <br/>
+                <b>Username:</b> {{randomUser.email}}
+                <br/>
+                <b>Password:</b> password
               </p>
             </div>
           </form>
         </div>
         <footer class="card-footer">
-          <a v-on:click="login" class="card-footer-item">Login</a>
-          <a href="account/forgot-password" class="card-footer-item">Forgot password</a>
+          <a v-if="credentials.username" v-on:click="login" class="card-footer-item">Login</a>
+          <!-- <a href="account/forgot-password" class="card-footer-item">Forgot password</a> -->
         </footer>
       </section>
     </div>
@@ -57,12 +66,30 @@
 .columns{
   margin: 3rem 0.25rem;
 }
+.logo{
+  margin: 1rem auto;
+  width: 15rem;
+}
 </style>
 
 <script>
 import gql from 'graphql-tag';
 
+const randUserQuery = gql`query{
+            randomUser{
+              email
+            }
+          }`
+
 export default {
+  asyncData({app,route,store}){
+      // but you could also call queries like this:
+      return app.apolloProvider.defaultClient.query({query:randUserQuery, variables:{}})
+        .then(({ data }) => {
+          // do what you want with data
+          return data
+        }).catch((err)=>console.log(err))
+  },
   data() {
     return {
       isAuthenticated:false,
@@ -73,14 +100,17 @@ export default {
         email: '',
         password: ''
       },
-      successfulData: null
+      successfulData: null,
+      successfulUsername: null,
     }
   },
+  layout:'plain',
   mounted(){
     this.isAuthenticated = !!this.$apolloHelpers.getToken()
   },
   methods: {
     async getUsername () {
+      this.credentials.email = this.credentials.email.trim()
       try {
         const res = await this.$apollo.query({
           query:  gql`query ($email: String!) {
@@ -90,9 +120,11 @@ export default {
           }`,
           variables: {email:this.credentials.email}
         }).then(({data}) => {
+          this.successfulUsername = true
           this.credentials.username = data.user.username
         })
       } catch (e) {
+        this.successfulUsername = false
         this.credentials.username = ""
       }
     },
@@ -112,7 +144,7 @@ export default {
           this.successfulData = data
           this.isAuthenticated = true
           // redirect user
-          this.$router.replace('/organisation/')
+          this.$router.replace('/organisation')
         })
       } catch (e) {
         console.error(e)
