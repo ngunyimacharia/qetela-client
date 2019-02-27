@@ -1,19 +1,12 @@
 export default {
   head: {
     script: [
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
+      { src: '~/assets/js/jquery.min.js' }
     ],
-    link: [
-      {
-        href: 'https://use.fontawesome.com/releases/v5.7.2/css/all.css',
-        rel: 'stylesheet',
-        integrity: 'sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr',
-        crossorigin: 'anonymous'
-      }
-    ]
   },
   css: [
     { src: '~/assets/css/main.scss', lang: 'scss' },
+    { src: '~/assets/css/fontawesome/css/all.min.css', lang: 'css' },
   ],
   modules: [
     '@nuxtjs/axios',

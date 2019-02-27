@@ -17,7 +17,17 @@
             </div>
             <div class="field">
               <p class="control has-icons-left has-icons-right">
-                <input v-on:blur="getUsername" v-model="credentials.email" class="input" type="email" placeholder="Email">
+                <input 
+                  v-on:blur="getUsername" 
+                  v-model="credentials.email" 
+                  class="input" 
+                  type="email" 
+                  placeholder="Email"
+                  v-bind:class="{
+                    'is-success':successfulUsername,
+                    'is-danger':(successfulUsername === false)
+                  }"
+                />
                 <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
                 </span>
@@ -112,14 +122,19 @@ export default {
   methods: {
     async getUsername () {
       this.credentials.email = this.credentials.email.trim()
+      if(!this.credentials.email.length){
+        this.successfulUsername= null
+        this.credentials.username= ""
+        return
+      }
       try {
         const res = await this.$apollo.query({
           query:  gql`query ($email: String!) {
             user(email:$email){
               id,
               username,
-              first_name,
-              last_name
+              firstName,
+              lastName
             }
           }`,
           variables: {email:this.credentials.email}
