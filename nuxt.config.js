@@ -12,6 +12,9 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
     '@nuxtjs/proxy',
+    '@nuxtjs/toast',
+    ['nuxt-vuex-localstorage', {
+      localStorage: ['user']}]
   ],
   proxy: {
     '/graphql': {
@@ -66,5 +69,9 @@ export default {
   },
   router: {
     middleware: ['auth']
-  }
+  },
+  toast: {
+    position: 'top-right',
+    duration: 3000
+}
 }

@@ -81,7 +81,7 @@
           <i class="fas fa-bell"></i>
         </nuxt-link>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link user-icon is-arrowless">KM</a>
+          <a class="navbar-link user-icon is-arrowless">{{ initials }}</a>
           <div class="navbar-dropdown">
             <nuxt-link class="navbar-item" to="/account/profile">Profile</nuxt-link>
             <a class="navbar-item" v-on:click="logout">Logout</a>
@@ -180,6 +180,9 @@
 
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
@@ -194,12 +197,18 @@ export default {
       ]
     }
   },
+  computed:{
+      ...mapState({
+          initials: state => state.user.user.initials
+      })
+  },
   methods: {
     toggleMenu(){
       this.mobileMenuActive = !this.mobileMenuActive
     },
     logout(){
       this.$apolloHelpers.onLogout()
+      this.$store.commit('user/remove')
       this.$router.replace('/account/login')
     }
   }

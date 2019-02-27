@@ -1,18 +1,20 @@
-// export const state = () => ({
-//   user: null,
-//   username: null
-// })
-//
-// export const mutations = {
-//   initialize (state, username) {
-//     state.username = username
-//   },
-//   set (state, user) {
-//     state.user = user
-//     state.username = user.username
-//   },
-//   remove (state) {
-//     state.user = null
-//     state.username = null
-//   }
-// }
+export const state = () => ({
+  user: {}
+})
+
+export const mutations = {
+  set (state, user) {
+    state.user = user
+    state.user.initials = user.firstName[0] + user.lastName[0]
+    if(!state.user.initials.length){
+        state.user.initials = "U"
+    }
+  },
+  remove (state) {
+    state.user = {}
+  }
+}
+
+export const actions = {
+    
+}

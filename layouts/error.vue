@@ -12,7 +12,7 @@
 
 <style lang="scss">
     #error{
-        padding: 4rem;
+        padding: 8vw;
         .err-icon{
             width: 20rem;
             margin: 0.5rem;

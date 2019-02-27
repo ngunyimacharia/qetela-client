@@ -11,7 +11,7 @@
 
 <style lang="scss">
     #under-dev{
-        padding: 4rem;
+        padding: 8vw;
         .dev-icon{
             width: 20rem;
             padding: 1rem;

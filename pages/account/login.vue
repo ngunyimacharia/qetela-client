@@ -45,7 +45,7 @@
               <div class="field">
                 <input v-model="credentials.username" type="hidden">
               </div>
-              <div class="field">
+              <div class="field" v-if="successfulUsername">
                 <p class="control has-icons-left">
                   <input v-model="credentials.password" class="input" type="password" placeholder="Password">
                   <span class="icon is-small is-left">
@@ -59,7 +59,7 @@
                   <br/>
                   <b>Username:</b> {{randomUser.email}}
                   <br/>
-                  <b>Password:</b> password
+                  <span v-if="successfulUsername"><b>Password:</b> password</span>
                 </p>
               </div>
             </form>
@@ -89,6 +89,7 @@
 
 <script>
 import gql from 'graphql-tag';
+import { error } from 'util';
 
 const randUserQuery = gql`query{
             randomUser{
@@ -131,6 +132,7 @@ export default {
         this.credentials.username= ""
         return
       }
+      this.$toast.show('Checking email...')
       try {
         const res = await this.$apollo.query({
           query:  gql`query ($email: String!) {
@@ -146,20 +148,23 @@ export default {
           this.successfulUsername = true
           this.credentials.username = data.user.username
           this.credentials.id = data.user.id
-          this.credentials.first_name = data.user.first_name
-          this.credentials.last_name = data.user.last_name
+          this.credentials.firstName = data.user.firstName
+          this.credentials.lastName = data.user.lastName
+          this.$toast.success('Email confirmed')
         })
       } catch (e) {
         this.successfulUsername = false
         this.credentials.username = ""
         this.credentials.id = null
-        this.credentials.first_name = null
-        this.credentials.last_name = null
+        this.credentials.firstName = null
+        this.credentials.firstName = null
+        this.$toast.error('Email not registered')
       }
     },
     async login () {
       this.submitting = true
       const credentials = this.credentials
+      this.$toast.show('Logging you in...')
       try {
         const res = await this.$apollo.mutate({
           mutation: gql`mutation ($username: String!,$password:String!) {
@@ -172,11 +177,24 @@ export default {
           this.$apolloHelpers.onLogin(data.tokenAuth.token, undefined, 7)
           this.successfulData = data
           this.isAuthenticated = true
+          // save user details
+          this.$store.commit('user/set', {
+            username:this.credentials.username,
+            email:this.credentials.email,
+            firstName:this.credentials.firstName,
+            lastName:this.credentials.lastName,
+
+          })
+          this.$toast.success('Login successful')
           // redirect user
           this.$router.replace('/organisation')
         })
       } catch (e) {
-        console.error(e)
+        if(e.message === "GraphQL error: Please, enter valid credentials"){
+          this.$toast.error('Please, enter valid credentials.')
+        }else{
+          console.log(error)
+        }
         this.error = e
       }
     },
