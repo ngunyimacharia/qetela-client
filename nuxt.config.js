@@ -1,7 +1,7 @@
 export default {
   head: {
     script: [
-      { src: '~/assets/js/jquery.min.js' }
+      { src: '/js/jquery.min.js' }
     ],
   },
   css: [

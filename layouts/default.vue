@@ -9,7 +9,7 @@
 
 <script>
 
-import TopBar from '~/components/TopBar'
+import TopBar from '~/components/general/TopBar'
 
 export default {
   components: {

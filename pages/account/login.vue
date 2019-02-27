@@ -1,86 +1,90 @@
 <template>
-  <div class="columns is-centered">
-    <div class="column is-one-third has-text-centered">
-      <img src="/images/logo.png" alt="Logo" title="Logo" class="logo">
-      <section class="card has-text-left">
-        <header class="card-header">
-          <h1 class="card-header-title">
-            Login
-          </h1>
-        </header>
-        <div class="card-content">
-          <form method="post">
-            <div class="field">
-              <p class="control has-icons-left">
-                Please enter your credentials to proceed
-              </p>
-            </div>
-            <div class="field">
-              <p class="control has-icons-left has-icons-right">
-                <input 
-                  v-on:blur="getUsername" 
-                  v-model="credentials.email" 
-                  class="input" 
-                  type="email" 
-                  placeholder="Email"
-                  v-bind:class="{
-                    'is-success':successfulUsername,
-                    'is-danger':(successfulUsername === false)
-                  }"
-                />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <span v-if="successfulUsername" class="icon is-small is-right">
-                  <i class="fas fa-check"></i>
-                </span>
-                <span v-if="successfulUsername === false" class="icon is-small is-right">
-                  <i class="fas fa-times"></i>
-                </span>
-              </p>
-               <p v-if="successfulUsername === false" class="help is-danger">This email is invalid</p>
-               <p v-if="successfulUsername" class="help is-success">This email is valid</p>
-            </div>
-            <div class="field">
-              <input v-model="credentials.username" type="hidden">
-            </div>
-            <div class="field">
-              <p class="control has-icons-left">
-                <input v-model="credentials.password" class="input" type="password" placeholder="Password">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </p>
-            </div>
-            <div class="field" v-if="randomUser">
-              <p class="is-size-7 has-text-left"> 
-                Try the following credentials:
-                <br/>
-                <b>Username:</b> {{randomUser.email}}
-                <br/>
-                <b>Password:</b> password
-              </p>
-            </div>
-          </form>
-        </div>
-        <footer class="card-footer">
-          <a v-if="credentials.username" v-on:click="login" class="card-footer-item">Login</a>
-          <a v-if="!credentials.username" class="card-footer-item has-text-black">Waiting for valid email</a>
-          <!-- <a href="account/forgot-password" class="card-footer-item">Forgot password</a> -->
-        </footer>
-      </section>
+  <section id="login">
+    <div class="columns is-centered">
+      <div class="column is-one-third has-text-centered">
+        <img src="/images/logo.png" alt="Logo" title="Logo" class="logo">
+        <section class="card has-text-left">
+          <header class="card-header">
+            <h1 class="card-header-title">
+              Login
+            </h1>
+          </header>
+          <div class="card-content">
+            <form method="post">
+              <div class="field">
+                <p class="control has-icons-left">
+                  Please enter your credentials to proceed
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input 
+                    v-on:blur="getUsername" 
+                    v-model="credentials.email" 
+                    class="input" 
+                    type="email" 
+                    placeholder="Email"
+                    v-bind:class="{
+                      'is-success':successfulUsername,
+                      'is-danger':(successfulUsername === false)
+                    }"
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span v-if="successfulUsername" class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span v-if="successfulUsername === false" class="icon is-small is-right">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </p>
+                <p v-if="successfulUsername === false" class="help is-danger">This email is invalid</p>
+                <p v-if="successfulUsername" class="help is-success">This email is valid</p>
+              </div>
+              <div class="field">
+                <input v-model="credentials.username" type="hidden">
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field" v-if="randomUser">
+                <p class="is-size-7 has-text-left"> 
+                  Try the following credentials:
+                  <br/>
+                  <b>Username:</b> {{randomUser.email}}
+                  <br/>
+                  <b>Password:</b> password
+                </p>
+              </div>
+            </form>
+          </div>
+          <footer class="card-footer">
+            <a v-if="credentials.username" v-on:click="login" class="card-footer-item">Login</a>
+            <a v-if="!credentials.username" class="card-footer-item has-text-black">Waiting for valid email</a>
+            <!-- <a href="account/forgot-password" class="card-footer-item">Forgot password</a> -->
+          </footer>
+        </section>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<style>
-.columns{
-  margin: 3rem 0.25rem;
-}
-.logo{
-  margin: 1rem auto;
-  width: 15rem;
-}
+<style lang="scss">
+  #login{
+    .columns{
+      margin: 3rem 0.25rem;
+    }
+    .logo{
+      margin: 1rem auto;
+      width: 15rem;
+    }
+  }
 </style>
 
 <script>

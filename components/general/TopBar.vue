@@ -93,85 +93,89 @@
 </template>
 
 <style lang="scss">
-.navbar-burger,.navbar-burger:hover{
-  color:#fff;
-}
+  nav.navbar{
+    background-color: #011638;
 
-.navbar,.navbar-menu {
-  background-color: #011638;
-}
-.navbar-menu a.navbar-item {
-  color: #fff;
-  font-size: 0.9em;
-  padding: 5px;
-}
-a.navbar-item:hover,
-a.navbar-item.is-active,
-.navbar-link:hover,
-.navbar-link.is-active {
-  background-color: #011638;
-  color: #3273dc;
-}
+    .navbar-burger,.navbar-burger:hover{
+      color:#fff;
+    }
 
-.user-icon,
-.user-icon:hover {
-  border-radius: 100%;
-  background: #ff1200 !important;
-  font-size: 0.6rem;
-  color: #fdfffc !important;
-  width: 1.6rem;
-  height: 1.6rem;
-  text-align: center;
-  margin: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0rem;
-  padding: 0.4rem;
-}
+    .navbar-menu {
+      background-color: #011638;
+    }
+    .navbar-menu a.navbar-item {
+      color: #fff;
+      font-size: 0.9em;
+      padding: 5px;
+    }
+    a.navbar-item:hover,
+    a.navbar-item.is-active,
+    .navbar-link:hover,
+    .navbar-link.is-active {
+      background-color: #011638;
+      color: #3273dc;
+    }
 
-.navbar-dropdown {
-  background-color: #011638;
-}
+    .user-icon,
+    .user-icon:hover {
+      border-radius: 100%;
+      background: #ff1200 !important;
+      font-size: 0.6rem;
+      color: #fdfffc !important;
+      width: 1.6rem;
+      height: 1.6rem;
+      text-align: center;
+      margin: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0rem;
+      padding: 0.4rem;
+    }
 
-.navbar-dropdown .navbar-item {
-  padding: 0.375rem 1rem;
-  white-space: nowrap;
-}
+    .navbar-dropdown {
+      background-color: #011638;
+    }
 
-.navbar-end .navbar-icon {
-  margin-left: 0.9rem;
-}
+    .navbar-dropdown .navbar-item {
+      padding: 0.375rem 1rem;
+      white-space: nowrap;
+    }
 
-.navbar-end button {
-  border-radius: 0.6rem !important;
-}
+    .navbar-end .navbar-icon {
+      margin-left: 0.9rem;
+    }
 
-.navbar-item.search input,
-.navbar-item.search button {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 0;
-  height: 30px;
-  color: #fff;
-  font-size: 1em;
-}
+    .navbar-end button {
+      border-radius: 0.6rem !important;
+    }
 
-.navbar-item.search input::placeholder {
-  color: #fff;
-  font-size: 0.8em;
-}
+    .navbar-item.search input,
+    .navbar-item.search button {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 0;
+      height: 30px;
+      color: #fff;
+      font-size: 1em;
+    }
 
-.navbar-item.search.has-addons input {
-  border-radius: 4px 0 0 4px;
-}
-.navbar-item.search.has-addons button {
-  border-radius: 0 4px 4px 0 !important;
-  font-size: 0.8em;
-  color: rgba(255, 255, 255, 0.7);
-}
+    .navbar-item.search input::placeholder {
+      color: #fff;
+      font-size: 0.8em;
+    }
 
-.navbar-item hr{
-	margin: 0.5rem;
-	height: 1px;
-}
+    .navbar-item.search.has-addons input {
+      border-radius: 4px 0 0 4px;
+    }
+    .navbar-item.search.has-addons button {
+      border-radius: 0 4px 4px 0 !important;
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .navbar-item hr{
+      margin: 0.5rem;
+      height: 1px;
+    }
+  }
 </style>
 
 
@@ -186,7 +190,7 @@ export default {
         { name: 'Reviews' },
         { name: 'Onboarding' },
         { name: 'Kudos' },
-        { name: 'Recommend' }
+        { name: 'Recommendations' }
       ]
     }
   },
