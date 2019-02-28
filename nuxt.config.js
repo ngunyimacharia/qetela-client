@@ -60,7 +60,7 @@ export default {
     clientConfigs: {
       default: {
         // required
-        httpEndpoint: 'http://localhost:3000/graphql',
+        httpEndpoint: 'https://api.qetela.tk/graphql',
         // optional
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
@@ -78,7 +78,7 @@ export default {
         websocketsOnly: false // Optional
       },
       test: {
-        httpEndpoint: 'http://localhost:3000/graphql',
+        httpEndpoint: 'https://api.qetela.tk/graphql',
         wsEndpoint: null,//'ws://127.0.0.1:8000/graphql',
         tokenName: 'apollo-token'
       },
