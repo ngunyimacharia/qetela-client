@@ -1,6 +1,13 @@
 export default {
   mode: 'spa',
   head: {
+    title: "Qetela: Consider it done!",
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'keywords', content: 'keyword 1, keyword 2'},
+      { hid: 'description', name: 'description', content: 'Employee engagement and performance management platform.'}
+    ],
     script: [
       { src: '/js/jquery.min.js' }
     ],
