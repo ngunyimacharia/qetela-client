@@ -1,4 +1,5 @@
 export default {
+  mode: 'spa',
   head: {
     script: [
       { src: '/js/jquery.min.js' }
@@ -8,6 +9,10 @@ export default {
     { src: '~/assets/css/main.scss', lang: 'scss' },
     { src: '~/assets/css/fontawesome/css/all.min.css', lang: 'css' },
   ],
+  plugins: [{ src: "~plugins/vue-tables-2.js", ssr: false }],
+  build: {
+      vendor: ["vue-tables-2"]
+  },
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
@@ -18,7 +23,7 @@ export default {
   ],
   proxy: {
     '/graphql': {
-      target: 'https://api.qetela.tk',
+      target: 'http://127.0.0.1:8000',
       pathRewrite: {
         '^/graphql' : '/graphql'
         }

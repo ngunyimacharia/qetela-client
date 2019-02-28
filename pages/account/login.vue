@@ -194,6 +194,7 @@ export default {
           this.$toast.error('Please, enter valid credentials.')
         }else{
           console.log(error)
+          this.$toast.error('An error occured, please try again.')
         }
         this.error = e
       }

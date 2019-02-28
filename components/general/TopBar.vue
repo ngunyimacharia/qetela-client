@@ -47,7 +47,7 @@
           class="navbar-item"
           v-for="(menu,index) in menus"
           :key="index"
-          v-bind:to="'/'+menu.name.toLowerCase()"
+          v-bind:to="menu.target"
         >{{ menu.name }}</nuxt-link>
         
         <div class="navbar-item has-dropdown is-hidden-desktop">
@@ -188,12 +188,12 @@ export default {
     return {
       mobileMenuActive:false,
       menus: [
-        { name: 'Organisation' },
-        { name: 'Goals' },
-        { name: 'Reviews' },
-        { name: 'Onboarding' },
-        { name: 'Kudos' },
-        { name: 'Recommendations' }
+        { name: 'Organisation', target:"/organisation"},
+        { name: 'Goals', target:"/goals" },
+        { name: 'Reviews',target:"/reviews" },
+        { name: 'Onboarding',target:"/onboarding" },
+        { name: 'Kudos',target:"/kudos" },
+        { name: 'Recommendations',target:"/recommendations" }
       ]
     }
   },
@@ -209,6 +209,7 @@ export default {
     logout(){
       this.$apolloHelpers.onLogout()
       this.$store.commit('user/remove')
+      this.$store.commit('organisation/remove')
       this.$router.replace('/account/login')
     }
   }
