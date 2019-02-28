@@ -4,8 +4,8 @@
       <h4 class="title is-4 has-text-centered">{{level.name}}</h4>
       <v-client-table :data="level.teams" :columns="columns" :options="options">
         <span slot="id" slot-scope="props">
-          <a target="_blank" :href="'/organisation/team/'+props.row.id">View</a>&nbsp;|&nbsp;
-          <a target="_blank" :href="'/organisation/team/'+props.row.id">Edit</a>
+          <a target="_blank" :href="'/organisation/team/view/'+props.row.id">View</a>&nbsp;|&nbsp;
+          <a target="_blank" :href="'/organisation/team/edit/'+props.row.id">Edit</a>
         </span>
         
       </v-client-table>

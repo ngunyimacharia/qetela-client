@@ -6,9 +6,6 @@
 </template>
 
 <style lang="scss">
-  html,body,#body{
-    // background: #f5f5f5 !important;
-  }
   .container{
     max-width: 95%;
   }

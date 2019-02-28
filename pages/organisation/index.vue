@@ -58,8 +58,8 @@ import gql from "graphql-tag";
 import { error } from "util";
 
 const orgQuery = gql`
-  query{
-    user(email:"mariaharvey@hotmail.com"){
+  query($email: String!){
+    user(email:$email){
       firstName,
       organisationSet{
         name,
