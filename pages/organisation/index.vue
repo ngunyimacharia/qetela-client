@@ -1,29 +1,16 @@
 <template>
   <section id="organisation">
-    
-    <section class="hero" v-if="organisation.name">
-      <div class="hero-body">
-        <div class="container">
-          <h3 class="title is-3">
-            {{organisation.name}}
-          </h3>
-          <h6 class="subtitle is-6">
-            This section allows you to manage your organisation details, levels, teams, positions and users
-          </h6>
-          <div class="tabs is-centered is-boxed">
-            <ul>
-              <li v-for="menu in childNav" :key="menu.target" v-bind:class="menuActive(menu.target)">
-                <nuxt-link v-bind:to="menu.target">
-                  {{menu.name}}
-                </nuxt-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    
+
     <section v-if="organisation.name">
+      <hero-nav
+        :title="organisation.name"
+        description="Manage your organisation details, levels, teams, positions and users"
+        :heroNavItems="heroNavItems"
+      >
+      </hero-nav>
+    </section>
+
+    <section>
       <NuxtChild :organisation="organisation" />
     </section>
 
@@ -32,60 +19,41 @@
 
 <style lang="scss">
 
-  .hero{
-    background: #f8f8f8;
-    color:#011638;
-    padding: 0.5rem 0 !important;
-    margin-bottom: 2rem;
-
-    .hero-body{
-      padding: 0;
-      h3{
-        margin: 1rem 0 !important;
-      }
-      h6{
-        margin: 2rem 0 !important;
-      }
-    }
-  }
-  
 </style>
 
 <script>
-import UnderDevelopment from "~/components/general/UnderDevelopment";
-
+import HeroNav from "~/components/general/HeroNav";
 import gql from "graphql-tag";
 import { error } from "util";
 
 const orgQuery = gql`
-  query($email: String!){
-    user(email:$email){
-      firstName,
-      organisationSet{
-        name,
-        website,
-        branches,
-        cfFrequency,
-        levelSet{
-          label,
-          number,
-          teamSet{
+query($email: String!){
+  user(email:$email){
+    firstName,
+    organisationSet{
+      name,
+      website,
+      branches,
+      cfFrequency,
+      levelSet{
+        label,
+        number,
+        teamSet{
+          id
+          name,
+          parent{
             id
-            name,
-            parent{
-              id
-            },
-            active,
-            positionSet{
-              id,
-              title,
-              userpositionSet{
-                user{
-                  id,
-                  firstName,
-                  lastName,
-                  email
-                }
+          },
+          active,
+          positionSet{
+            id,
+            title,
+            userpositionSet{
+              user{
+                id,
+                firstName,
+                lastName,
+                email
               }
             }
           }
@@ -93,23 +61,24 @@ const orgQuery = gql`
       }
     }
   }
+}
 `;
 
 export default {
   layout: "default",
   components: {
-    UnderDevelopment
+    HeroNav
   },
   computed:{
     organisation:function() {
-      
+
       if(typeof this.$store.state.user.user.username == 'undefined'){
         return {};
       }
 
       if(typeof this.$store.state.organisation.organisation.name == 'undefined'){
-      this.$toast.show('Loading organisation info...')
-      // but you could also call queries like this:
+        this.$toast.show('Loading organisation info...')
+        // but you could also call queries like this:
         return this.$apollo.query({ query: orgQuery, variables: {email:this.$store.state.user.user.email} })
         .then(({ data }) => {
           //save organisation details
@@ -136,7 +105,7 @@ export default {
   },
   data() {
     return {
-      childNav:[
+      heroNavItems:[
         {name:"General",target:"/organisation",active:true},
         {name:"Teams",target:"/organisation/teams"},
         {name:"Positions",target:"/organisation/positions"},
