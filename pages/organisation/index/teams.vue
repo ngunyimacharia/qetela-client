@@ -7,7 +7,7 @@
           <a target="_blank" :href="'/organisation/team/view/'+props.row.id">View</a>&nbsp;|&nbsp;
           <a target="_blank" :href="'/organisation/team/edit/'+props.row.id">Edit</a>
         </span>
-        
+
       </v-client-table>
     </div>
   </section>
@@ -17,70 +17,6 @@
 #teams {
   .leveld {
     margin: 2rem 0;
-  }
-
-  .VueTables {
-      border: 2px solid #f5f5f5;
-      padding: 1.5rem;
-
-      .VueTables__search-field label{
-        display: none;
-      }
-      .row {
-        display: block;
-        clear: both;
-        overflow: hidden;
-      }
-
-      .pull-left{
-        float: left;
-        margin-bottom: 1rem;
-      }
-
-      .pull-right{
-        float: right;
-      }
-
-      input{
-        border: 2px solid #f1f1f1;
-        background-color: #fafafa;
-        height: 30px;
-        font-size: 1em;
-        margin-left: 0.4rem;
-        padding: 0 0.4rem;
-      }
-
-      select{
-        height: 30px;
-        padding:3px 10px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-
-    .VuePagination,.VuePagination__count{
-      margin: 1rem;
-    }
-    .VuePagination__count{
-      text-align: center
-    }
-
-    .table-responsive {
-      overflow-x:auto;
-      table{
-        width: 100%;
-        th{
-          font-weight: 700;
-          cursor: pointer;
-        }
-          td,th{
-            border: 1px solid #ddd;
-          }
-          td:nth-last-child(1){
-            text-align: center;
-          }
-      }
-    }
   }
 }
 </style>
