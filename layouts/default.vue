@@ -1,7 +1,9 @@
 <template>
   <div id="body">
     <top-bar />
-    <nuxt />
+    <div class="content">
+      <nuxt />
+    </div>
   </div>
 </template>
 
