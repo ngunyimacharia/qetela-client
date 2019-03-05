@@ -5,7 +5,7 @@
         <img class="is-hidden-touch" src="~/static/images/logo-sm-bw.png">
         <img class="is-hidden-desktop" src="~/static/images/logo-bw.png">
       </a>
-      
+
       <a
         role="button"
         class="navbar-burger burger"
@@ -49,7 +49,7 @@
           :key="index"
           v-bind:to="menu.target"
         >{{ menu.name }}</nuxt-link>
-        
+
         <div class="navbar-item has-dropdown is-hidden-desktop">
           <hr/>
           <div class="navbar-dropdown">
@@ -208,8 +208,7 @@ export default {
     },
     logout(){
       this.$apolloHelpers.onLogout()
-      this.$store.commit('user/remove')
-      this.$store.commit('organisation/remove')
+      this.$store.dispatch('CLEAR_STORAGE')
       this.$router.replace('/account/login')
     }
   }
