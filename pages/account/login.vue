@@ -18,11 +18,11 @@
               </div>
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                  <input 
-                    v-on:blur="getUsername" 
-                    v-model="credentials.email" 
-                    class="input" 
-                    type="email" 
+                  <input
+                    v-on:blur="getUsername"
+                    v-model="credentials.email"
+                    class="input"
+                    type="email"
                     placeholder="Email"
                     v-bind:class="{
                       'is-success':successfulUsername,
@@ -54,7 +54,7 @@
                 </p>
               </div>
               <div class="field" v-if="randomUser">
-                <p class="is-size-7 has-text-left"> 
+                <p class="is-size-7 has-text-left">
                   Try the following credentials:
                   <br/>
                   <b>Username:</b> {{randomUser.email}}
@@ -185,9 +185,10 @@ export default {
             lastName:this.credentials.lastName,
 
           })
+
           this.$toast.success('Login successful')
           // redirect user
-          this.$router.replace('/organisation')
+          this.$router.replace('/organisation?login=true')
         })
       } catch (e) {
         if(e.message === "GraphQL error: Please, enter valid credentials"){
