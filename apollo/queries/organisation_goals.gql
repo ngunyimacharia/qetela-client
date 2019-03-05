@@ -20,7 +20,7 @@ query goals{
       id
     },
     user{
-      id
+      email
     }
   }
 }

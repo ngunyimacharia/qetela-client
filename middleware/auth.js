@@ -1,5 +1,6 @@
 // middleware/isAuth.js
   export default function ({app ,store, route, redirect, error, next}) {
+
     const hasToken = !!app.$apolloHelpers.getToken()
     if(route.path == '/account/login'){
       //Confirm not logged out

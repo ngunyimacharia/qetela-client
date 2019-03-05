@@ -6,9 +6,9 @@
           <h3 class="title is-4">
             {{title}}
           </h3>
-          <h6 class="subtitle is-6">
+          <p class="subtitle is-6">
             {{description}}
-          </h6>
+          </p>
           <div class="tabs is-centered is-boxed">
             <ul>
               <li v-for="menu in heroNavItems" :key="menu.target" v-bind:class="menuActive(menu.target)">
@@ -36,7 +36,7 @@
   .hero-body{
     padding: 0;
     h3{
-      margin: 0.5rem 0 !important;
+      margin: 0.5rem 0 3rem !important;
     }
     h6{
       margin: 1rem 0 !important;

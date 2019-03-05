@@ -13,6 +13,19 @@ export const getters = {
     return state.goals.filter(goal => {
       return (goal.team == null && goal.user == null)
     })
+  },
+
+  PERSONAL_GOALS: state => email => {
+    const goals = state.goals.filter(goal => {
+      if(goal.user){
+        return (goal.user.email == email)
+      }
+      return false
+    })
+    for(let goal of goals){
+      goal.owner = true
+    }
+    return goals
   }
 
 }
@@ -47,17 +60,17 @@ export const mutations = {
 export const actions = {
 
   GET_GOALS(store, context){
-      context.$toast.show('Loading goals info...')
-      return context.apolloProvider.defaultClient.query({ query: goalsQuery, variables: {} })
-      .then(({ data }) => {
-        const goals = data.goals
-        // save goals
-        store.commit('SET_GOALS', goals)
-        context.$toast.success('Goals info loaded')
-      })
-      .catch((data,err) => {
-        console.log(data,err)
-        context.$toast.error('An error occured, please try again.')
-      });
+    context.$toast.show('Loading goals info...')
+    return context.apolloProvider.defaultClient.query({ query: goalsQuery, variables: {} })
+    .then(({ data }) => {
+      const goals = data.goals
+      // save goals
+      store.commit('SET_GOALS', goals)
+      context.$toast.success('Goals info loaded')
+    })
+    .catch((data,err) => {
+      console.log(data,err)
+      context.$toast.error('An error occured, please try again.')
+    });
   }
 }

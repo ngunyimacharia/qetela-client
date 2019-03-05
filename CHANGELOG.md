@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+ - Goals company view, team view and personal view
+
+### Changed
+- Converted organisations hero section to component
+- Added getTeams to organisation store
+- Changed store structure and location of queries
+
+### Fixed
+- Move vuetables css to global css
+
+### Added
+ - Login, Sign-out added
+ - Custom under development and error pages added
+ - User vuex store added
+ - Organisation views complete
+ - Changelog added
+
+### Fixed
+ - Charset, Viewport, Keywords and description added
+
 ## 0.0.1 - 2019-03-04
 
 ### Added
@@ -26,6 +47,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README.md initialized
 - License added
 
-[Unreleased]: https://github.com/ngunyimacharia/qetela-server/compare/v0.0.2...HEAD
-[0.0.2]: https://github.com/ngunyimacharia/qetela-server/compare/v0.0.1...v0.0.2
-[0.0.1]: https://github.com/ngunyimacharia/qetela-server/compare/v0.0.0...v0.0.1
+[Unreleased]: https://github.com/ngunyimacharia/qetela-client/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/ngunyimacharia/qetela-client/compare/v0.0.0...v0.0.1
