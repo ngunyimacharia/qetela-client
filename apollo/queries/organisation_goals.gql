@@ -1,0 +1,26 @@
+query goals{
+  goals{
+    id,
+    title,
+    description,
+    start,
+    end,
+    completed,
+    published,
+    kpiSet{
+      metric,
+      target,
+      current,
+      change,
+      kpiupdateSet{
+        progress
+      }
+    }
+    team{
+      id
+    },
+    user{
+      id
+    }
+  }
+}
