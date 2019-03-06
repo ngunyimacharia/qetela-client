@@ -25,8 +25,8 @@ export default {
   data() {
     return {
       heroNavItems:[
-        {name:"Personal",target:"/goals/personal"},
-        {name:"Organisation",target:"/goals",active:true},
+        {name:"Personal",target:"/goals/personal",active:true},
+        {name:"Organisation",target:"/goals"},
         {name:"Teams",target:"/goals/teams"},
       ]
     };
