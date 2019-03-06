@@ -1,0 +1,24 @@
+query onboarding{
+  kits{
+    title,
+    taskSet{
+      name,
+      description
+    }
+    sessionSet{
+      user{
+        username
+      },
+      buddy{
+        username
+      },
+      completed,
+      progressSet{
+        task{
+          id
+        },
+        completed
+      }
+    }
+  }
+}

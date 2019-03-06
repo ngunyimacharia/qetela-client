@@ -45,7 +45,7 @@ export default {
   ],
   proxy: {
     '/graphql': {
-      target: 'https://api.qetela.tk',
+      target: 'http://127.0.0.1:8000',
       pathRewrite: {
         '^/graphql' : '/graphql'
         }
@@ -68,7 +68,7 @@ export default {
     clientConfigs: {
       default: {
         // required
-        httpEndpoint: 'https://api.qetela.tk/graphql',
+        httpEndpoint: 'http://127.0.0.1:8000/graphql',
         // optional
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
@@ -86,7 +86,7 @@ export default {
         websocketsOnly: false // Optional
       },
       test: {
-        httpEndpoint: 'https://api.qetela.tk/graphql',
+        httpEndpoint: 'http://127.0.0.1:8000/graphql',
         wsEndpoint: null,//'ws://127.0.0.1:8000/graphql',
         tokenName: 'apollo-token'
       },
