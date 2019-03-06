@@ -4,10 +4,10 @@ export const state = () => ({
 
 
 export const mutations = {
-  REMOVE_DATA(state, organisation) {
-    context.store.dispatch('user/REMOVE_USER')
-    context.store.dispatch('organisation/REMOVE_ORGANISATION')
-    context.store.dispatch('goals/REMOVE_GOALS')
+  REMOVE_DATA(state,context) {
+    context.$store.dispatch('user/REMOVE_USER')
+    context.$store.dispatch('organisation/REMOVE_ORGANISATION')
+    context.$store.dispatch('goals/REMOVE_GOALS')
   }
 }
 
@@ -24,8 +24,8 @@ export const actions = {
     }
   },
 
-  CLEAR_STORAGE (store, organisation) {
-    store.commit('REMOVE_DATA')
+  CLEAR_STORAGE (store,context) {
+    store.commit('REMOVE_DATA',context)
   }
 
 }

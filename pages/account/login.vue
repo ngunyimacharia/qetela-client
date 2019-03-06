@@ -178,7 +178,7 @@ export default {
           this.successfulData = data
           this.isAuthenticated = true
           // save user details
-          this.$store.commit('user/set', {
+          this.$store.commit('user/SET_USER', {
             username:this.credentials.username,
             email:this.credentials.email,
             firstName:this.credentials.firstName,

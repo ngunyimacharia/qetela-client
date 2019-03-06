@@ -17,7 +17,12 @@ export default {
         href: 'https://use.fontawesome.com/releases/v5.7.2/css/all.css',
         integrity: "sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
         crossorigin: "anonymous",
-      }
+      },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: 'icon.png',
+      },
     ]
   },
   css: [
@@ -36,10 +41,11 @@ export default {
       localStorage: ['user']}
     ],
     'nuxt-client-init-module',
+    '@nuxtjs/pwa',
   ],
   proxy: {
     '/graphql': {
-      target: 'http://127.0.0.1:8000',
+      target: 'https://api.qetela.tk',
       pathRewrite: {
         '^/graphql' : '/graphql'
         }
@@ -62,7 +68,7 @@ export default {
     clientConfigs: {
       default: {
         // required
-        httpEndpoint: 'http://127.0.0.1:8000/graphql',
+        httpEndpoint: 'https://api.qetela.tk/graphql',
         // optional
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
@@ -80,7 +86,7 @@ export default {
         websocketsOnly: false // Optional
       },
       test: {
-        httpEndpoint: 'http://127.0.0.1:8000/graphql',
+        httpEndpoint: 'https://api.qetela.tk/graphql',
         wsEndpoint: null,//'ws://127.0.0.1:8000/graphql',
         tokenName: 'apollo-token'
       },

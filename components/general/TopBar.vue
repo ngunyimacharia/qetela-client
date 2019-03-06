@@ -208,7 +208,7 @@ export default {
     },
     logout(){
       this.$apolloHelpers.onLogout()
-      this.$store.dispatch('CLEAR_STORAGE')
+      this.$store.dispatch('CLEAR_STORAGE',this)
       this.$router.replace('/account/login')
     }
   }

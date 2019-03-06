@@ -18,6 +18,7 @@ export const getters = {
   PERSONAL_GOALS: state => email => {
     const goals = state.goals.filter(goal => {
       if(goal.user){
+        console.log(goal.user.email == email)
         return (goal.user.email == email)
       }
       return false
