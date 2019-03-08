@@ -21,6 +21,7 @@ query organisations{
             userpositionSet{
               user{
                 id,
+                username,
                 firstName,
                 lastName,
                 email

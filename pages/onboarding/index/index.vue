@@ -1,28 +1,50 @@
 <template>
   <section class="container">
-
-
-    <section class="accordions">
-      <article class="accordion" v-for="kit in kits" :key="kit.title">
-        <div class="accordion-header">
-          <p>{{kit.title}}</p>
-          <button class="toggle" aria-label="toggle"></button>
-        </div>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+    <div class="div-table">
+      <div v-for="kit in kits">
+        <div class="columns">
+          <div class="column is-four-fifths">{{kit.title}}</div>
+          <div class="column action">
+            <a>View <i class="fas fa-chevron-right"></i></a>
           </div>
         </div>
-      </article>
-    </section>
-
+      </div>
+    </div>
   </section>
 </template>
+
+<style lang="scss">
+  .div-table > div{
+  	border-bottom: 1px solid transparent;
+  	border-top: 1px solid transparent;
+    padding: 0.5rem;
+    font-size: 0.9em;
+
+    .action{
+      font-size: 0.9em;
+      display: none;
+      a{
+        color: #4a4a4a;
+      }
+    }
+  }
+  .div-table > div:hover {
+    border-color: #dbdfe1;
+
+    .action{
+      display: initial;
+    }
+  }
+
+</style>
 
 <script>
 
 export default {
 
+  mounted(){
+
+  },
   computed:{
     kits:function(){
       return this.$store.getters['onboarding/KITS']

@@ -44,12 +44,26 @@
         </div>
 
         <nuxt-link
-          class="navbar-item"
+          class="navbar-item is-hidden-touch"
           v-for="(menu,index) in menus"
           :key="index"
           v-bind:to="menu.target"
-        >{{ menu.name }}</nuxt-link>
+        >
+          <div>
+            <div><i :class="menu.icon"></i></div>
+            <div>{{ menu.name }}</div>
+          </div>
+        </nuxt-link>
 
+
+        <nuxt-link
+          class="navbar-item is-hidden-desktop"
+          v-for="(menu,index) in menus"
+          :key="index"
+          v-bind:to="menu.target"
+        >
+          {{ menu.name }}
+        </nuxt-link>
         <div class="navbar-item has-dropdown is-hidden-desktop">
           <hr/>
           <div class="navbar-dropdown">
@@ -83,7 +97,6 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link user-icon is-arrowless">{{ initials }}</a>
           <div class="navbar-dropdown">
-            <nuxt-link class="navbar-item" to="/account/profile">Profile</nuxt-link>
             <a class="navbar-item" v-on:click="logout">Logout</a>
           </div>
         </div>
@@ -108,6 +121,18 @@
       font-size: 0.9em;
       padding: 5px;
     }
+
+    .navbar-start {
+      a.navbar-item{
+        div{
+          text-align: center;
+          padding-top: 2px;
+          padding-left:10px;
+          font-size: 12px;
+        }
+      }
+    }
+
     a.navbar-item:hover,
     a.navbar-item.is-active,
     .navbar-link:hover,
@@ -188,12 +213,11 @@ export default {
     return {
       mobileMenuActive:false,
       menus: [
-        { name: 'Organisation', target:"/organisation"},
-        { name: 'Goals', target:"/goals" },
-        { name: 'Reviews',target:"/reviews" },
-        { name: 'Onboarding',target:"/onboarding" },
-        { name: 'Kudos',target:"/kudos" },
-        { name: 'Recommendations',target:"/recommendations" }
+        { name: 'Organisation', target:"/organisation", icon:"far fa-building fa-lg"},
+        { name: 'Goals', target:"/goals", icon:"fas fa-bullseye fa-lg" },
+        { name: 'Reviews',target:"/reviews", icon:"far fa-clipboard fa-lg" },
+        { name: 'Onboarding',target:"/onboarding",icon:"far fa-handshake fa-lg" },
+        { name: 'My Profile',target:"/up/"+this.$store.getters['user/USER'].username,icon:"far fa-user-circle fa-lg" },
       ]
     }
   },

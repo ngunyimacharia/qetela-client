@@ -10,7 +10,6 @@ export default {
     ],
     script: [
       { src: '/js/jquery.min.js' },
-      { src: '~/node_modules/bulma-extensions/bulma-accordion/dist/bulma-accordion.min.js'},
     ],
     link: [
       {
@@ -29,7 +28,9 @@ export default {
   css: [
     { src: '~/assets/css/main.scss', lang: 'scss' },
   ],
-  plugins: [{ src: "~plugins/vue-tables-2.js", ssr: false }],
+  plugins: [
+    { src: "~plugins/vue-tables-2.js", ssr: false },
+  ],
   build: {
       vendor: ["vue-tables-2"]
   },

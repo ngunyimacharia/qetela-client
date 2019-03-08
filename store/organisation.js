@@ -12,7 +12,7 @@ export const getters = {
     const teams = []
     for(let level of state.organisation.levelSet){
       if(level.id !== levelId){
-          continue;
+        continue;
       }
 
       for(let team of level.teamSet){
@@ -32,6 +32,19 @@ export const getters = {
     }
 
     return teams
+  },
+  USER:state => (username)=> {
+    for(let level of state.organisation.levelSet){
+      for(let team of level.teamSet){
+        for(let position of team.positionSet){
+          for(let up of position.userpositionSet){
+            if(up.user.username == username){
+              return up.user
+            }
+          }
+        }
+      }
+    }
   }
 }
 
