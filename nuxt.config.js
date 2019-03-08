@@ -9,7 +9,8 @@ export default {
       { hid: 'description', name: 'description', content: 'Employee engagement and performance management platform.'}
     ],
     script: [
-      { src: '/js/jquery.min.js' }
+      { src: '/js/jquery.min.js' },
+      { src: '~/node_modules/bulma-extensions/bulma-accordion/dist/bulma-accordion.min.js'},
     ],
     link: [
       {

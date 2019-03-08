@@ -1,20 +1,47 @@
 <template>
-  <under-development />
+  <section id="goals">
+    <hero-nav
+      title="Organisational onboarding"
+      description="Manage onboarding kits and onboarding sessions to ensure your new employees become fully functioning employees" :heroNavItems="heroNavItems"
+    >
+    </hero-nav>
+
+    <section>
+      <NuxtChild />
+    </section>
+
+  </section>
 </template>
 
-<script>
+<style lang="scss">
 
-import UnderDevelopment from '~/components/general/UnderDevelopment'
+</style>
+
+<script>
+import HeroNav from "~/components/general/HeroNav";
 
 export default {
+  layout: "default",
   components: {
-    UnderDevelopment
+    HeroNav
   },
   data() {
     return {
-      
-    }
+      heroNavItems:[
+        {name:"Kits",target:"/onboarding",active:true},
+        {name:"Sessions",target:"/onboarding/sessions"},
+        {name:"Assigned",target:"/onboarding/assigned"},
+        {name:"Buddying",target:"/onboarding/buddy"},
+      ]
+    };
   },
-  layout:'default',
-}
+  methods:{
+    menuActive(target){
+      const path = $nuxt.$route.path
+      if(path === target){
+        return 'is-active'
+      }
+    }
+  }
+};
 </script>
