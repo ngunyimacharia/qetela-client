@@ -211,20 +211,32 @@ import { mapState } from 'vuex'
 export default {
   data() {
     return {
-      mobileMenuActive:false,
-      menus: [
-        { name: 'Organisation', target:"/organisation", icon:"far fa-building fa-lg"},
-        { name: 'Goals', target:"/goals", icon:"fas fa-bullseye fa-lg" },
-        { name: 'Reviews',target:"/reviews", icon:"far fa-clipboard fa-lg" },
-        { name: 'Onboarding',target:"/onboarding",icon:"far fa-handshake fa-lg" },
-        { name: 'My Profile',target:"/up/",icon:"far fa-user-circle fa-lg" },
-      ]
+      mobileMenuActive:false
     }
   },
   computed:{
       ...mapState({
           initials: state => state.user.user.initials
-      })
+      }),
+      menus: function(){
+        const menu = [
+          { name: 'Organisation', target:"/organisation", icon:"far fa-building fa-lg"},
+          { name: 'Goals', target:"/goals", icon:"fas fa-bullseye fa-lg" },
+          { name: 'Reviews',target:"/reviews", icon:"far fa-clipboard fa-lg" },
+          { name: 'Onboarding',target:"/onboarding",icon:"far fa-handshake fa-lg" },
+        ]
+        if(this.$store.getters['user/USER']){
+          menu.push(
+            {
+              name: 'My Profile',
+              target:"/up/"+this.$store.getters['user/USER'].username,
+              icon:"far fa-user-circle fa-lg"
+            }
+          )
+        }
+        return menu
+
+      }
   },
   methods: {
     toggleMenu(){

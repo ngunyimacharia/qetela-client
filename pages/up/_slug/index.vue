@@ -84,18 +84,21 @@ export default {
 
     UpdatesBar,
   },
+  mounted(){
+    this.user = this.$store.getters['organisation/USER'](this.$route.params.slug)
+  },
   computed:{
     kpiData:function(){
-        const username = this.$store.getters['user/USER'].username
-        return this.$store.getters['goals/KPI_WEEKLY_DATA'](username)
+      return this.$store.getters['goals/KPI_WEEKLY_DATA'](this.username)
     },
     position:function(){
+      console.log("Checking position")
       return this.$store.getters['organisation/USER_POSITION'](this.user.username)
     },
   },
   data() {
     return {
-      user:this.$store.getters['user/USER']
+      user:{}
     }
   },
 }

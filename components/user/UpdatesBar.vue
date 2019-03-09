@@ -27,7 +27,7 @@ export default {
       const results = this.$store.getters['goals/KPI_WEEKLY_DATA'](username)
       this.labels = results.keys
       this.data = results.values
-
+      this.$forceUpdate()
   },
   data() {
     return {

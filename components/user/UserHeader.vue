@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column ppic">
           <figure class="image is-128x128">
-            <img class="is-rounded" src="~/static/images/ppic.jpeg">
+            <img class="is-rounded" :src="profile()">
           </figure>
         </div>
         <div class="column is-four-fifths details">
@@ -17,23 +17,23 @@
               {{user.email}}
             </a>
           </p>
-          <p>
+          <!-- <p>
             <a href="tel:+233501693321">
               <i class="fas fa-phone"></i>
               +233501693321
             </a>
-          </p>
+          </p> -->
           <p>
             {{position.title}}
           </p>
           <div>
-            <a class="button is-info is-outlined">
+            <a class="button is-info is-outlined" :disabled="isOwner()">
               <span class="icon">
                 <i class="fas fa-thumbs-up"></i>
               </span>
               <span>Kudos</span>
             </a>
-            <a class="button is-info is-outlined">
+            <a class="button is-info is-outlined" :disabled="isOwner()">
               <span class="icon">
                 <i class="fas fa-comment-alt"></i>
               </span>
@@ -43,6 +43,9 @@
         </div>
       </div>
     </div>
+
+    <kudos-modal :receiver="user" />
+
   </section>
 </template>
 
@@ -81,7 +84,12 @@
 
 <script>
 
+import KudosModal from "~/components/user/KudosModal";
+
 export default {
+  components: {
+    KudosModal
+  },
   props: ["user","position"],
   computed:{
       //
@@ -91,5 +99,13 @@ export default {
       //
     }
   },
+  methods:{
+    profile:function(){
+      return '/images/profile/' +  parseFloat(Math.floor(Math.random() * 7) + 1).toFixed(0) + '.png'
+    },
+    isOwner:function(){
+      return (this.user.username == this.$store.getters['user/USER'].username)
+    }
+  }
 }
 </script>

@@ -25,6 +25,21 @@ query organisations{
                 firstName,
                 lastName,
                 email,
+                
+                kudoSet{
+                  title,
+                  description,
+                  sender {
+                    username
+                  }
+                },
+                recommendationSet{
+                  title,
+                  description,
+                  sender {
+                    username
+                  }
+                }
               }
             }
           }

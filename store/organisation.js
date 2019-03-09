@@ -34,6 +34,9 @@ export const getters = {
     return teams
   },
   USER:state => (username)=> {
+    if(typeof state.organisation.levelSet == 'undefined'){
+      return;
+    }
     for(let level of state.organisation.levelSet){
       for(let team of level.teamSet){
         for(let position of team.positionSet){

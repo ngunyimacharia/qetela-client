@@ -33,7 +33,12 @@
           <div class='column is-four-fifths'>
             <p class="title">{{kudo.title}}</p>
             <p class="description">{{kudo.description}}</p>
-            <p class="giver">Given by: <a>{{ getUser(kudo.sender.username) }}</a></p>
+            <p class="giver">
+              Given by:
+              <nuxt-link :to="'/up/' + kudo.sender.username">
+                {{ getUser(kudo.sender.username) }}
+              </nuxt-link>
+            </p>
           </div>
         </div>
       </div>
