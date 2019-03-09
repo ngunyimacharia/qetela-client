@@ -140,7 +140,21 @@ export default {
               id,
               username,
               firstName,
-              lastName
+              lastName,
+              kudoSet{
+                title,
+                description,
+                sender {
+                  username
+                }
+              },
+              recommendationSet{
+                title,
+                description,
+                sender {
+                  username
+                }
+              }
             }
           }`,
           variables: {email:this.credentials.email}
@@ -150,6 +164,8 @@ export default {
           this.credentials.id = data.user.id
           this.credentials.firstName = data.user.firstName
           this.credentials.lastName = data.user.lastName
+          this.credentials.kudoSet = data.user.kudoSet
+          this.credentials.recommendationSet = data.user.recommendationSet
           this.$toast.success('Email confirmed')
         })
       } catch (e) {
@@ -158,6 +174,8 @@ export default {
         this.credentials.id = null
         this.credentials.firstName = null
         this.credentials.firstName = null
+        this.credentials.kudoSet =null
+        this.credentials.recommendationSet =null
         this.$toast.error('Email not registered')
       }
     },
@@ -183,6 +201,8 @@ export default {
             email:this.credentials.email,
             firstName:this.credentials.firstName,
             lastName:this.credentials.lastName,
+            kudoSet: this.credentials.kudoSet,
+            recommendationSet: this.credentials.recommendationSet,
 
           })
 

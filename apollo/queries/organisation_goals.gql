@@ -13,14 +13,15 @@ query goals{
       current,
       change,
       kpiupdateSet{
-        progress
+        progress,
+        created,
       }
     }
     team{
       id
     },
     user{
-      email
+      username
     }
   }
 }

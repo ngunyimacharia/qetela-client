@@ -24,7 +24,7 @@ query organisations{
                 username,
                 firstName,
                 lastName,
-                email
+                email,
               }
             }
           }

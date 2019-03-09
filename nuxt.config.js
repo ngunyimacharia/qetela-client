@@ -30,6 +30,7 @@ export default {
   ],
   plugins: [
     { src: "~plugins/vue-tables-2.js", ssr: false },
+    { src: "~/plugins/chart", ssr: false }
   ],
   build: {
       vendor: ["vue-tables-2"]

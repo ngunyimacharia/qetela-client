@@ -46,7 +46,7 @@
         <nuxt-link
           class="navbar-item is-hidden-touch"
           v-for="(menu,index) in menus"
-          :key="index"
+          :key="menu.name"
           v-bind:to="menu.target"
         >
           <div>
@@ -217,7 +217,7 @@ export default {
         { name: 'Goals', target:"/goals", icon:"fas fa-bullseye fa-lg" },
         { name: 'Reviews',target:"/reviews", icon:"far fa-clipboard fa-lg" },
         { name: 'Onboarding',target:"/onboarding",icon:"far fa-handshake fa-lg" },
-        { name: 'My Profile',target:"/up/"+this.$store.getters['user/USER'].username,icon:"far fa-user-circle fa-lg" },
+        { name: 'My Profile',target:"/up/",icon:"far fa-user-circle fa-lg" },
       ]
     }
   },

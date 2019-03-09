@@ -1,4 +1,5 @@
 import * as goalsQuery from '~/apollo/queries/organisation_goals'
+import moment from 'moment';
 
 export const state = () => ({
   goals: []
@@ -15,11 +16,10 @@ export const getters = {
     })
   },
 
-  PERSONAL_GOALS: state => email => {
+  PERSONAL_GOALS: state => username => {
     const goals = state.goals.filter(goal => {
       if(goal.user){
-        console.log(goal.user.email == email)
-        return (goal.user.email == email)
+        return (goal.user.username == username)
       }
       return false
     })
@@ -27,7 +27,44 @@ export const getters = {
       goal.owner = true
     }
     return goals
-  }
+  },
+
+  KPI_WEEKLY_DATA: state => username => {
+    const updates = []
+    for(let goal of state.goals){
+      if(goal.user){
+        if(goal.user.username == username){
+          for(let kpi of goal.kpiSet){
+            for(let update of kpi.kpiupdateSet){
+              updates.push(update)
+            }
+          }
+        }
+      }
+    }
+
+    const date = moment()
+    const keys = []
+    const values = []
+    for(let i=0;i<=7;i++){
+      // create start and end moment to check for updates
+      let start = moment(date).subtract(7,'days')
+      let end = moment(date)
+      let count = 0
+      // check for updates in between
+      for(let update of updates){
+        if(moment(update.created).isBetween(start,end)){
+          count++;
+        }
+      }
+
+      // Update keys and values
+      keys.push(date.format('Do MMM'))
+      values.push(count)
+      date.subtract(7, 'days');
+    }
+    return {keys,values}
+  },
 
 }
 

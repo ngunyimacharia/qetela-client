@@ -11,6 +11,9 @@
   .container{
     max-width: 95%;
   }
+  .content{
+    font-size: 14px;
+  }
 </style>
 
 <script>

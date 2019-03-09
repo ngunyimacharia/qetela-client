@@ -13,8 +13,8 @@ export default {
   },
   computed:{
     goals:function(){
-      const email = this.$store.getters['user/USER'].email
-      return this.$store.getters['goals/PERSONAL_GOALS'](email)
+      const username = this.$store.getters['user/USER'].username
+      return this.$store.getters['goals/PERSONAL_GOALS'](username)
     },
   },
   data(){

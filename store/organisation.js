@@ -45,6 +45,22 @@ export const getters = {
         }
       }
     }
+  },
+  USER_POSITION:state => (username)=> {
+    if(typeof state.organisation.levelSet == 'undefined'){
+      return;
+    }
+    for(let level of state.organisation.levelSet){
+      for(let team of level.teamSet){
+        for(let position of team.positionSet){
+          for(let up of position.userpositionSet){
+            if(up.user.username == username){
+              return position
+            }
+          }
+        }
+      }
+    }
   }
 }
 

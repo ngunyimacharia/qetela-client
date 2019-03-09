@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
  - Onboarding views
+ - User view 
 
 ### Changed
  - Change default goals page to personal
+ - Navigation bar
 
 ## 0.0.2 - 2019-03-06
 
