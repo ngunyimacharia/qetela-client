@@ -3,9 +3,10 @@
     <div class="leveld" v-for="level in levels" :key="level.id">
       <h4 class="title is-4 has-text-centered">{{level.name}}</h4>
       <v-client-table :data="level.members" :columns="columns" :options="options">
-        <span slot="id" slot-scope="props">
-          <a target="_blank" :href="'/organisation/member/view/'+props.row.id">View</a>&nbsp;|&nbsp;
-          <a target="_blank" :href="'/organisation/member/edit/'+props.row.id">Edit</a>
+        <span slot="username" slot-scope="props">
+          <nuxt-link :to="'/up/'+props.row.username">View</nuxt-link>
+          &nbsp;|&nbsp;
+          <a href="#">Edit</a>
         </span>
       </v-client-table>
     </div>
@@ -18,7 +19,7 @@ export default {
   data() {
     return {
       levels: [],
-      columns: ["firstName", "lastName", "email", "position", "team", "id"],
+      columns: ["firstName", "lastName", "email", "position", "team", "username"],
       options: {
         headings: {
           firstName: "First Name",
@@ -26,7 +27,7 @@ export default {
           email: "Email",
           position: "Position",
           team: "Team",
-          id: ""
+          username: ""
         },
         sortable: ["firstName", "lastName", "email", "position", "team"],
         filterable: ["firstName", "lastName", "email", "position", "team"]
