@@ -8,7 +8,7 @@ export const mutations = {
     context.$store.dispatch('user/REMOVE_USER')
     context.$store.dispatch('organisation/REMOVE_ORGANISATION')
     context.$store.dispatch('goals/REMOVE_GOALS')
-    context.$store.dispatch('chats/DEL_CHATS')
+    context.$store.dispatch('chats/REMOVE_CHATS')
     context.$store.dispatch('onboarding/REMOVE_KITS')
   }
 }

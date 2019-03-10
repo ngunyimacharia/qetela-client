@@ -221,9 +221,9 @@ export default {
       menus: function(){
         const menu = [
           { name: 'Organisation', target:"/organisation", icon:"far fa-building fa-lg"},
-          { name: 'Goals', target:"/goals", icon:"fas fa-bullseye fa-lg" },
+          { name: 'Goals', target:"/goals/personal", icon:"fas fa-bullseye fa-lg" },
           { name: 'Reviews',target:"/reviews", icon:"far fa-clipboard fa-lg" },
-          { name: 'Onboarding',target:"/onboarding",icon:"far fa-handshake fa-lg" },
+          { name: 'Onboarding',target:"/onboarding/sessions",icon:"far fa-handshake fa-lg" },
         ]
         if(this.$store.getters['user/USER']){
           menu.push(

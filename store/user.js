@@ -16,11 +16,13 @@ export const mutations = {
         state.user.initials = "U"
     }
   },
-  REMOVE_USER (state) {
+  DEL_USER (state) {
     state.user = {}
   }
 }
 
 export const actions = {
-
+  REMOVE_USER(store){
+    store.commit('DEL_USER')
+  }
 }

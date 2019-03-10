@@ -124,9 +124,11 @@ export const mutations = {
     }
     state.goals = goals
   },
-  REMOVE_GOALS(state){
-    state.goals = {}
+
+  DEL_GOALS(state){
+    state.goals = []
   },
+
   STORE_UPDATE(state,params){
     let goal = params.context.$store.getters['goals/GOAL'](params.goalId)
     for(let kpi of goal.kpiSet){
@@ -155,7 +157,13 @@ export const actions = {
       context.$toast.error('An error occured, please try again.')
     });
   },
+
   SEND_UPDATE(store,params){
     store.commit('STORE_UPDATE', params)
   },
+
+  REMOVE_GOALS(store){
+    store.commit('DEL_GOALS')
+  }
+
 }

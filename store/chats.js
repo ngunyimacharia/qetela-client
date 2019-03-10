@@ -33,7 +33,7 @@ export const mutations = {
       }
     }
   },
-  REMOVE_CHATS(state){
+  DEL_CHATS(state){
     state.chats = {}
   }
 }
@@ -57,7 +57,7 @@ export const actions = {
   SEND_MESSAGE(store,params){
     store.commit('ADD_MESSAGE', params)
   },
-  DEL_CHATS(store){
-    store.commit('REMOVE_CHATS')
+  REMOVE_CHATS(store){
+    store.commit('DEL_CHATS')
   }
 }

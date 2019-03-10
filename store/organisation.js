@@ -80,7 +80,7 @@ export const mutations = {
   SET_ORGANISATION (state, organisation) {
     state.organisation = organisation
   },
-  REMOVE_ORGANISATION(state){
+  DEL_ORGANISATION(state){
     state.organisation = {}
   },
 
@@ -178,6 +178,10 @@ export const actions = {
     param.context.$toast.show('Sending recommendation....')
     store.commit('APPEND_RECOMMENDATION', param)
     param.context.$toast.success('Recommendation sent!')
+  },
+
+  REMOVE_ORGANISATION(store){
+    store.commit('DEL_ORGANISATION')
   }
 
 }

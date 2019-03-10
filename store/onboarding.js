@@ -39,7 +39,7 @@ export const mutations = {
       }
     }
   },
-  REMOVE_KITS(state){
+  DEL_KITS(state){
     state.kits = []
   }
 }
@@ -59,6 +59,10 @@ export const actions = {
       console.log(data,err)
       context.$toast.error('An error occured, please try again.')
     });
+  },
+
+  REMOVE_KITS(store){
+    store.commit('DEL_KITS')
   }
 
 }
