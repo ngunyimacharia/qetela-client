@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column ppic">
           <figure class="image is-128x128">
-            <img class="is-rounded" :src="profile()">
+            <img class="is-rounded" :src="user.ppic">
           </figure>
         </div>
         <div class="column is-four-fifths details">
@@ -27,13 +27,13 @@
             {{position.title}}
           </p>
           <div>
-            <a class="button is-info is-outlined" :disabled="isOwner()">
+            <a class="button is-info is-outlined" :disabled="isOwner()" v-on:click="toggleModal('kudos')">
               <span class="icon">
                 <i class="fas fa-thumbs-up"></i>
               </span>
               <span>Kudos</span>
             </a>
-            <a class="button is-info is-outlined" :disabled="isOwner()">
+            <a class="button is-info is-outlined" :disabled="isOwner()" v-on:click="toggleModal('recommendation')">>
               <span class="icon">
                 <i class="fas fa-comment-alt"></i>
               </span>
@@ -44,7 +44,8 @@
       </div>
     </div>
 
-    <kudos-modal :receiver="user" />
+    <kudos-modal :active="this.modals.kudos" :receiver="user" />
+    <recommend-modal :active="this.modals.recommendation" :receiver="user" />
 
   </section>
 </template>
@@ -85,26 +86,40 @@
 <script>
 
 import KudosModal from "~/components/user/KudosModal";
+import RecommendModal from "~/components/user/RecommendModal";
 
 export default {
   components: {
-    KudosModal
+    KudosModal,
+    RecommendModal
   },
   props: ["user","position"],
+  mounted:function(){
+    this.$on('close-modal', function (modal) {
+        this.modals[modal] = !this.modals[modal]
+    });
+  },
   computed:{
       //
   },
   data() {
     return {
-      //
+      modals:{
+        kudos:false,
+        recommendation:false,
+      }
     }
   },
   methods:{
-    profile:function(){
-      return '/images/profile/' +  parseFloat(Math.floor(Math.random() * 7) + 1).toFixed(0) + '.png'
-    },
     isOwner:function(){
       return (this.user.username == this.$store.getters['user/USER'].username)
+    },
+    toggleModal(modal){
+      if(this.user.username == this.$store.getters['user/USER'].username){
+        return;
+      }
+      this.modals[modal] = !this.modals[modal]
+      this.$forceUpdate()
     }
   }
 }

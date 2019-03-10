@@ -92,7 +92,6 @@ export default {
       return this.$store.getters['goals/KPI_WEEKLY_DATA'](this.username)
     },
     position:function(){
-      console.log("Checking position")
       return this.$store.getters['organisation/USER_POSITION'](this.user.username)
     },
   },

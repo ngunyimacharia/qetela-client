@@ -58,7 +58,11 @@
           <div class='column is-four-fifths'>
             <p class="title">{{recommendation.title}}</p>
             <p class="description">{{recommendation.description}}</p>
-            <p class="giver">Given by: <a>{{ getUser(recommendation.sender.username) }}</a></p>
+            <p class="giver">Given by:
+              <nuxt-link :to="'/up/' + recommendation.sender.username">
+                {{ getUser(recommendation.sender.username) }}
+              </nuxt-link>
+            </p>
           </div>
         </div>
       </div>

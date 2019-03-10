@@ -1,4 +1,5 @@
 import * as orgQuery from '~/apollo/queries/organisations'
+import moment from 'moment';
 
 export const state = () => ({
   organisation: {}
@@ -73,7 +74,44 @@ export const mutations = {
   },
   REMOVE_ORGANISATION(state){
     state.organisation = {}
+  },
+
+  // Kudos section
+  APPEND_KUDOS(state,param){
+    if(typeof state.organisation.levelSet == 'undefined'){
+      return;
+    }
+    for(let level of state.organisation.levelSet){
+      for(let team of level.teamSet){
+        for(let position of team.positionSet){
+          for(let up of position.userpositionSet){
+            if(up.user.username == param.username){
+              up.user.kudoSet.push(param.kudos)
+            }
+          }
+        }
+      }
+    }
+  },
+
+  // Kudos section
+  APPEND_RECOMMENDATION(state,param){
+    if(typeof state.organisation.levelSet == 'undefined'){
+      return;
+    }
+    for(let level of state.organisation.levelSet){
+      for(let team of level.teamSet){
+        for(let position of team.positionSet){
+          for(let up of position.userpositionSet){
+            if(up.user.username == param.username){
+              up.user.recommendationSet.push(param.recommendation)
+            }
+          }
+        }
+      }
+    }
   }
+
 }
 
 
@@ -86,6 +124,19 @@ export const actions = {
     .then(({ data }) => {
       //save organisation details
       const organisation = data.organisations[0]
+
+      //Load ppics
+      for(let level of organisation.levelSet){
+        for(let team of level.teamSet){
+          for(let position of team.positionSet){
+            for(let up of position.userpositionSet){
+              up.user.ppic = '/images/profile/' +  parseFloat(Math.floor(Math.random() * 7) + 1).toFixed(0) + '.png'
+            }
+          }
+        }
+      }
+
+      //set
       store.commit('SET_ORGANISATION', {
         name: organisation.name,
         website:organisation.website,
@@ -94,6 +145,7 @@ export const actions = {
         created:organisation.created,
         levelSet:organisation.levelSet,
       })
+
       context.$toast.success('Organisation info loaded')
       return organisation;
     })
@@ -101,6 +153,23 @@ export const actions = {
       console.log(err)
       context.$toast.error('An error occured, please try again.')
     });
+  },
+
+  // Kudos section
+  SEND_KUDOS(store,param){
+    //set
+    param.context.$toast.show('Sending kudos....')
+    store.commit('APPEND_KUDOS', param)
+    param.context.$toast.success('Kudos sent!')
+  },
+
+
+  // Kudos section
+  SEND_RECOMMENDATION(store,param){
+    //set
+    param.context.$toast.show('Sending recommendation....')
+    store.commit('APPEND_RECOMMENDATION', param)
+    param.context.$toast.success('Recommendation sent!')
   }
 
 }
