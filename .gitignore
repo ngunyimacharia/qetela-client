@@ -10,6 +10,3 @@ npm-debug.log
 
 #env file
 .env
-
-#pwa
-sw.*
