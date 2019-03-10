@@ -18,6 +18,8 @@
 
 <script>
 
+document.querySelector('body').classList.add('has-navbar-fixed-top')
+
 import TopBar from '~/components/general/TopBar'
 
 export default {

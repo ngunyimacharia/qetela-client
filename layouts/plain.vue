@@ -1,6 +1,6 @@
 <template>
   <div class="plain">
-      <nav class="navbar has-text-centered" role="navigation" aria-label="main navigation">
+      <nav class="navbar has-text-centered is-fixed-top" role="navigation" aria-label="main navigation">
           <a class="navbar-item" href="/">
             <img src="~/static/images/logo-bw.png">
           </a>

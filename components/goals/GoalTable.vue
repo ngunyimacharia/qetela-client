@@ -17,8 +17,9 @@
         </progress>
       </span>
       <span slot="id" slot-scope="props">
-        <a target="_blank" :href="'/goals/view/'+props.row.id">View</a>&nbsp;|&nbsp;
-        <a target="_blank" :href="'/goals/edit/'+props.row.id">Edit</a>
+        <nuxt-link :to=" '/goals/'+props.row.id + '/view/' ">View</nuxt-link>
+        <!-- &nbsp;|&nbsp;
+        <a href="#">Edit</a> -->
       </span>
 
     <div slot="child_row" slot-scope="props">

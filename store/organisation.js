@@ -15,9 +15,7 @@ export const getters = {
       if(level.id !== levelId){
         continue;
       }
-
       for(let team of level.teamSet){
-
         if(parentId){
           if(team.parent == null){
             continue
@@ -27,12 +25,22 @@ export const getters = {
           }
         }
         teams.push(team)
-
       }
-
     }
 
     return teams
+  },
+  TEAM:state => teamId => {
+    if(typeof state.organisation.levelSet == 'undefined'){
+      return;
+    }
+    for(let level of state.organisation.levelSet){
+      for(let team of level.teamSet){
+        if(teamId == team.id){
+          return team
+        }
+      }
+    }
   },
   USER:state => (username)=> {
     if(typeof state.organisation.levelSet == 'undefined'){

@@ -12,8 +12,10 @@ $size-5:1.15rem;
 $size-6:0.9rem;
 $size-7:0.65rem;
 
+//card
+$card-header-background-color: #30343f;
+$card-header-color: #fff;
+
 @import '~bulma';
 @import 'pagination';
 @import 'vue-tables'
-
-//Bulma bulma-extensions

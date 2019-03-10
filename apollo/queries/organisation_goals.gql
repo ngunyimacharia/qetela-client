@@ -8,6 +8,7 @@ query goals{
     completed,
     published,
     kpiSet{
+      id,
       metric,
       target,
       current,
@@ -22,6 +23,9 @@ query goals{
     },
     user{
       username
+    },
+    parent{
+      id
     }
   }
 }

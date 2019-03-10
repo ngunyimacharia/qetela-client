@@ -10,6 +10,14 @@ export const getters = {
     return state.goals
   },
 
+  GOAL: state => id => {
+    for(let goal of state.goals){
+      if(goal.id == id){
+        return goal
+      }
+    }
+  },
+
   ORGANISATION_GOALS: state => {
     return state.goals.filter(goal => {
       return (goal.team == null && goal.user == null)
@@ -66,33 +74,69 @@ export const getters = {
     return {keys,values}
   },
 
+  HIERARCHY: state => params => {
+    const hierarchy = []
+    let goal = params.context.$store.getters['goals/GOAL'](params.goalId)
+    while(goal.parent){
+      hierarchy.push(goal)
+      goal = params.context.$store.getters['goals/GOAL'](goal.parent.id)
+    }
+    return hierarchy.reverse()
+  },
+
 }
 
-const calculateProgress = (goals) => {
-  for(let goal of goals){
-    let total = 0
-    for(let kpi of goal.kpiSet){
-      kpi.progress = (kpi.current / kpi.target).toFixed(2)
-      if(kpi.progress > 1){
-        kpi.progress = 1
-      }
-      total += kpi.current / kpi.target
-    }goalsQuery
-    goal.progress = (total / goal.kpiSet.length).toFixed(2)
-    if(goal.progress > 1){
-      goal.progress = 1
+const calculateProgress = (goal) => {
+  let total = 0
+  for(let kpi of goal.kpiSet){
+    kpi.progress = (kpi.current / kpi.target).toFixed(2)
+    if(kpi.progress > 1){
+      kpi.progress = 1
+    }
+    total += parseFloat(kpi.progress)
+  }
+  goal.progress = (total / goal.kpiSet.length).toFixed(2)
+  if(goal.progress >= 1){
+    goal.progress = 1
+    goal.completed = moment().format()
+  }
+
+  //Check status
+  if(goal.progress == 1){
+    goal.status = 'Completed'
+    goal.statusColor = 'is-primary'
+  }else{
+    if( moment().isBetween(moment(goal.start),moment(goal.end)) ){
+      goal.status = 'In Progress'
+      goal.statusColor = 'is-success'
+    }else{
+      goal.status = 'Expired'
+      goal.statusColor = 'is-danger'
     }
   }
+
 }
 
 export const mutations = {
   SET_GOALS(state, goals) {
-    calculateProgress(goals)
+    for(let goal of goals){
+      calculateProgress(goal)
+    }
     state.goals = goals
   },
   REMOVE_GOALS(state){
     state.goals = {}
-  }
+  },
+  STORE_UPDATE(state,params){
+    let goal = params.context.$store.getters['goals/GOAL'](params.goalId)
+    for(let kpi of goal.kpiSet){
+      if(kpi.id == params.kpiId){
+        kpi.current = parseFloat(kpi.current) + parseFloat(params.update.progress)
+        kpi.kpiupdateSet.push(params.update)
+        calculateProgress(goal)
+      }
+    }
+  },
 }
 
 export const actions = {
@@ -110,5 +154,8 @@ export const actions = {
       console.log(data,err)
       context.$toast.error('An error occured, please try again.')
     });
-  }
+  },
+  SEND_UPDATE(store,params){
+    store.commit('STORE_UPDATE', params)
+  },
 }

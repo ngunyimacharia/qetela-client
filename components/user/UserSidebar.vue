@@ -76,6 +76,7 @@
 #user-sidebar{
   background-color: #F3F3F3;
   height: 100%;
+  min-height: 100vh;
 
   .tabs{
     background-color: #FAFAF8;

@@ -1,0 +1,18 @@
+query chats{
+  chats{
+    id,
+    title,
+    goal{
+      id
+    },
+    messageSet{
+      content,
+      user{
+        username
+      }
+    },
+    team{
+      id
+    }
+  }
+}

@@ -13,7 +13,7 @@
         </div>
         <div class="columns" v-for="goal in goals">
           <div class = "column is-two-thirds">
-            {{goal.title}}
+            <nuxt-link :to="'/goals/'+goal.id+'/view/'">{{goal.title}}</nuxt-link>
           </div>
           <div class = "column">
             <progress :class="progressColor(goal.progress)" :value="goal.progress" max="1" :title="getPercentage(goal.progress)">
