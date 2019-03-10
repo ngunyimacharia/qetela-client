@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
  - Onboarding views
- - User view 
+ - User view
+ - Give user kudos and recommendation
 
 ### Changed
  - Change default goals page to personal
