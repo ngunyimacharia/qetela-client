@@ -1,11 +1,14 @@
 query onboarding{
   kits{
+    id,
     title,
     taskSet{
+      id,
       name,
       description
     }
     sessionSet{
+      id,
       user{
         username
       },
@@ -18,6 +21,10 @@ query onboarding{
           id
         },
         completed
+      },
+      kit{
+        id,
+        title
       }
     }
   }

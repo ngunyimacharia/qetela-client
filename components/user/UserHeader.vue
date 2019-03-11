@@ -50,7 +50,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header{
   padding: 1rem 0;
 

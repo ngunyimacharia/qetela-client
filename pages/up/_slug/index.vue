@@ -1,6 +1,6 @@
 <template>
-  <div id="up" v-if="user && position">
-    <div class='columns'>
+  <div id="up" v-if="user">
+    <div class='columns' v-if="user.kudoSet.length && position">
       <!-- Main section -->
       <div class="column is-three-quarters">
         <div class="container">
@@ -97,7 +97,9 @@ export default {
   },
   data() {
     return {
-      user:{}
+      user:{
+        kudoSet:[]
+      }
     }
   },
 }

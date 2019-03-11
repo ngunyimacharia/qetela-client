@@ -57,6 +57,7 @@ export const getters = {
         }
       }
     }
+    return {}
   },
   USER_POSITION:state => (username)=> {
     if(typeof state.organisation.levelSet == 'undefined'){
@@ -73,6 +74,7 @@ export const getters = {
         }
       }
     }
+    return {}
   }
 }
 

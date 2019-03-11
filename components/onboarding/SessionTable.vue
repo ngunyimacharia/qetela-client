@@ -12,32 +12,10 @@
         {{ parseDateTime(props.row.completed) }}
       </span>
       <span slot="id" slot-scope="props">
-        <a target="_blank" :href="'/goals/view/'+props.row.id">View</a>&nbsp;|&nbsp;
-        <a target="_blank" :href="'/goals/edit/'+props.row.id">Edit</a>
+        <nuxt-link :to=" '/onboarding/'+props.row.id + '/view/' ">View</nuxt-link>
+        <!-- &nbsp;|&nbsp; -->
+        <!-- <a target="_blank" :href="'/goals/edit/'+props.row.id">Edit</a> -->
       </span>
-
-    <!-- <div slot="child_row" slot-scope="props">
-      <b>Description</b>
-      <p>{{props.row.description}}</p>
-      <b>Key Performance Indicators</b>
-      <ul>
-        <li v-for="kpi in props.row.kpiSet" :key="">
-          <div class="columns">
-            <div class="column is-two-fifth">
-              {{ getKpiText( kpi )}}
-            </div>
-              <div class="column is-two-fifth">
-                <progress :class="progressColor(kpi.progress)" :value="kpi.progress" max="1" :title="getPercentage(kpi.progress)">
-                  {{ getPercentage(kpi.progress) }}
-                </progress>
-              </div>
-                <div class="column is-one-fifth">
-                <a class="button is-info is-small" v-if="props.row.owner">Post update</a>
-                </div>
-          </div>
-        </li>
-      </ul>
-    </div> -->
     </v-client-table>
   </div>
 
@@ -49,19 +27,22 @@ import moment from 'moment';
 
 export default {
   props: ["sessions"],
+  method(){
+    console.log(this.sessions)
+  },
   data(){
     return {
-      columns: ["kit", "user", "buddy", "completed", "id"],
+      columns: ["kitTitle", "user", "buddy", "completed", "id"],
       options: {
         headings: {
-          kit: "Kit",
+          kitTitle: "Kit",
           user: "Assigned",
           buddy: "Buddy",
           completedgetUser: "Completed",
           id: ""
         },
-        sortable: ["kit","user","buddy","completed"],
-        filterable: ["kit", "user", "buddy",]
+        sortable: ["kitTitle","user","buddy","completed"],
+        filterable: ["kitTitle", "user", "buddy",]
       }
     };
   },
@@ -78,7 +59,7 @@ export default {
       if(user){
         return user.firstName + ' ' + user.lastName
       }else{
-        console.log(username,user)
+        return ''
       }
     }
   }

@@ -13,7 +13,7 @@
         </div>
         <div class="columns" v-for="session in sessions">
           <div class = "column is-two-thirds">
-            <p>{{session.kit}}</p>
+            <p>{{session.kitTitle}}</p>
             <p><b>Buddy:</b>&nbsp;{{ getUser(session.buddy.username) }}</p>
             <p><b>Completed:</b>&nbsp; {{ parseDateTime(session.completed) }}</p>
           </div>
