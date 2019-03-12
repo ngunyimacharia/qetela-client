@@ -57,21 +57,20 @@
 
 <style lang="scss">
 .ob-header{
-  // padding: 1rem 0;
+  padding:0 0 2rem;
   background: white;
   margin-bottom: 3rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
 
   .main-title{
     width: 100%;
     text-align: center;
-    background: #30343f;
-    color: white;
+    background: #fff;
+    color: #30343f;
     font-size: 1.5em;
     padding: 1rem;
-  }
-
-  .card-header{
-    background: #011638;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
   }
 
   .card-header-title{

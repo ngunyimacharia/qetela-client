@@ -1,6 +1,6 @@
 <template>
   <div class="columns" id="team-goals">
-    <div class="column is-one-fifth">
+    <div class="column is-one-quarter">
       <!-- Table data filters -->
       <nav class="panel" >
       <p class="panel-heading">
@@ -13,20 +13,22 @@
         <div class="select">
           <select v-model="selectedYear" v-on:change="timeSelected()">
             <option value=""> All Years </option>
-            <option v-for="year in years">{{year}}</option>
+            <option v-for="year in years" :key="year">{{year}}</option>
           </select>
         </div>
       </div>
-      <div class="panel-block" v-for="level in levels" v-if="level.number <= maxLevel">
-        <label>
-          {{level.label}}
-        </label>
-        <div class="select">
-          <select v-model="level.value" v-on:change="teamSelected(level.number,level.value);">
-            <option value="">All {{level.label}}</option>
-            <option v-for="team in getTeams(level.id,level.number)" :value="team.id"> {{team.name}} </option>
-          </select>
-        </div>
+      <div class="panel-block" v-for="level in levels" :key="level.id">
+        <span v-if="level.number <= maxLevel">
+          <label>
+            {{level.label}}
+          </label>
+          <div class="select">
+            <select v-model="level.value" v-on:change="teamSelected(level.number,level.value);">
+              <option value="">All {{level.label}}</option>
+              <option v-for="team in getTeams(level.id,level.number)" :key="team.id" :value="team.id"> {{team.name}} </option>
+            </select>
+          </div>
+        </span>
       </div>
     </nav>
     </div>
@@ -47,13 +49,29 @@
 
   #team-goals{
 
-    .panel-block{
-      justify-content: space-between;
+    .panel{
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
+      border:0;
+      border-radius: 0;
+      padding-bottom: 0.5em; 
 
-      .select{
-          max-width: 70%;
+      .panel-heading{
+        background-color: #eceff1;
+        border:0;
+        border-radius: 0;
+        margin-bottom: 0;
       }
 
+      .panel-block{
+        justify-content: space-between;
+        border:0;
+        margin: 0.5rem 0;
+
+        .select{
+            max-width: 70%;
+        }
+
+      }
     }
 
   }

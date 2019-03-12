@@ -45,7 +45,7 @@
 
         <nuxt-link
           class="navbar-item is-hidden-touch"
-          v-for="(menu,index) in menus"
+          v-for="menu in menus"
           :key="menu.name"
           v-bind:to="menu.target"
         >

@@ -3,7 +3,8 @@
     <hero-nav
       title="Organisational onboarding"
       description="Manage onboarding kits and onboarding sessions to ensure your new employees become fully functioning employees" :heroNavItems="heroNavItems"
-    >
+      image="/images/icons/home.png" 
+      >
     </hero-nav>
 
     <section>

@@ -21,7 +21,7 @@
 
     <div class="chat">
       <div class="messages">
-        <div class="chat-message" v-for="message in chat.messageSet" :class="msgOwner(message.user.username)">
+        <div class="chat-message" v-for="message in chat.messageSet" :key="message.id" :class="msgOwner(message.user.username)">
           <nuxt-link :to=" '/up/'+message.user.username " class='sender'>{{getUser(message.user.username)}}</nuxt-link>
           <p class="body">{{message.content}}</p>
         </div>
@@ -49,6 +49,7 @@
 
   .sidebar{
     position: fixed;
+    // box-shadow: 0 2px 8px 0px rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
   }
 }
 
@@ -59,13 +60,15 @@
   .head{
     background-color: #FAFAF8;
     padding: 0.5rem;
-
+    box-shadow:  0 0 10px -5px rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
+    border-bottom: 1px solid #d5dce0;
     .title{
       font-size: 1rem;
       margin: 0.5rem 0 0;
       text-align: center;
-      font-weight: 400;
+      font-weight: 600;
       opacity: 0.7;
+      color: #363636;
     }
   }
 
@@ -75,8 +78,9 @@
     .messages{
       padding: 1rem;
       overflow-y: scroll;
-      height: 65vh;
+      height: 72vh;
       scroll-behavior: smooth;
+      background: rgba(56, 174, 204,0.1);
 
       .owner{
         float: right !important;
@@ -92,6 +96,7 @@
         border-radius: .4em;
         width: 80%;
         font-size: 0.9em;
+        box-shadow:  0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
 
         .sender{
           color:#38aecc;
@@ -109,13 +114,13 @@
     .message-input{
 
       overflow: hidden;
-      background-color: #FAFAF8;
+      background-color: #fff;
       border: 1px solid #d5dce0;
       textarea{
         width: 100%;
         resize: none;
         height: 10vh;
-        background-color: #FAFAF8;
+        background-color: #FFF;
         color:#30343f;
         font-size: 0.9em;
         padding: 1rem;

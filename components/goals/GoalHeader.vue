@@ -65,7 +65,9 @@
 
 <style lang="scss" scoped>
 .header{
-  padding: 1rem 0;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
+  margin-bottom: 2rem;
 
   .gpic{
     padding: 1rem 2rem;
@@ -77,7 +79,7 @@
   .details{
 
     .title{
-      font-size: 1.5em;
+      font-size: 1.4em;
       font-weight: normal;
       color: #30343f;
     }
@@ -88,7 +90,7 @@
     }
 
     p{
-      font-size: 1em;
+      font-size: 0.9em;
       i{
         padding-right: 0.5rem;
       }

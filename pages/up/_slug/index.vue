@@ -1,11 +1,10 @@
 <template>
   <div id="up" v-if="user">
-    <div class='columns' v-if="user.kudoSet.length && position">
+    <div class='columns is-gapless' v-if="user.kudoSet.length && position">
       <!-- Main section -->
       <div class="column is-three-quarters">
-        <div class="container">
           <user-header :user="user" :position="position"></user-header>
-          <br/>
+          
           <div class="columns user-content-section">
             <div class = "column">
               <user-goals :user="user" />
@@ -19,7 +18,6 @@
               <UpdatesBar />
 
             </div>
-          </div>
         </div>
       </div>
       <!-- Sidebar section -->
@@ -37,23 +35,8 @@
   margin: 0;
   max-width: 100vw;
 
-  .card-header{
-    background-color: #30343f;
-    .card-header-title{
-      color:#fff;
-      text-transform: uppercase;
-    }
-  }
-
-  .card-content{
-    .columns{
-      // border-bottom:1px solid #e0e6e8
-    }
-  }
-
   .user-content-section{
-    border-top: 1px solid rgba(48, 52, 63, 0.1);
-    padding-top: 0.5rem;
+    padding: 0 1rem;
   }
 }
 

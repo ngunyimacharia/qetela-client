@@ -1,17 +1,15 @@
 <template>
-  <section class="container">
-    <goal-table :goals ="orgGoals"></goal-table>
+  <section>
+    <goal-cards :goals ="orgGoals" />
   </section>
 </template>
 
 <script>
-import moment from 'moment';
-
-import GoalTable from "~/components/goals/GoalTable";
+import GoalCards from "~/components/goals/GoalCards";
 
 export default {
   components: {
-    GoalTable
+    GoalCards
   },
   computed:{
     orgGoals:function(){
@@ -19,8 +17,9 @@ export default {
     },
   },
   data(){
-    return {
-    };
+    return {};
+  },
+  methods:{
   }
 }
 </script>

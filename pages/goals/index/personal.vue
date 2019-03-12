@@ -1,15 +1,15 @@
 <template>
-  <section class="container">
-    <goal-table :goals ="goals"></goal-table>
+  <section>
+    <goal-cards :goals ="goals" />
   </section>
 </template>
 
 <script>
-import GoalTable from "~/components/goals/GoalTable";
+import GoalCards from "~/components/goals/GoalCards";
 
 export default {
   components: {
-    GoalTable
+    GoalCards
   },
   computed:{
     goals:function(){

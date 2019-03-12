@@ -25,7 +25,7 @@
       <div class="none" v-if="!user.kudoSet.length">
         No kudos have been given
       </div>
-      <div class="item" v-for="kudo in user.kudoSet">
+      <div class="item" v-for="kudo in user.kudoSet" :key="kudo.id">
         <div class="columns">
           <div class="column">
             <div class="icon"><i class="fas fa-thumbs-up"></i></div>
@@ -50,7 +50,7 @@
       <div class="none" v-if="!user.recommendationSet.length">
         No recommendations have been given
       </div>
-      <div class="item" v-for="recommendation in user.recommendationSet">
+      <div class="item" v-for="recommendation in user.recommendationSet" :key="recommendation.id">
         <div class="columns">
           <div class="column">
             <div class="icon"><i class="fas fa-comment-alt"></i></div>

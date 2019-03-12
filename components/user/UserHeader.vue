@@ -2,28 +2,30 @@
   <section class="header">
     <div class="">
       <div class="columns">
-        <div class="column ppic">
+        <div class="column is-one-fifths ppic">
           <figure class="image is-128x128">
-            <img class="is-rounded" :src="user.ppic">
+            <img :src="user.ppic">
           </figure>
         </div>
-        <div class="column is-four-fifths details">
+        <div class="column is-two-fifths details">
           <p class="title is-4">
             {{user.firstName}} {{user.lastName}}
           </p>
           <p>
+            <span class = "highlight"><i class="fas fa-envelope"></i>Email:  </span>
             <a :href="'mailto:'+user.email">
-              <i class="fas fa-envelope"></i>
               {{user.email}}
             </a>
           </p>
-          <!-- <p>
-            <a href="tel:+233501693321">
-              <i class="fas fa-phone"></i>
-              +233501693321
-            </a>
-          </p> -->
           <p>
+            <span class = "highlight"><i class="fas fa-phone"></i>Phone:  </span>
+            <a href="tel:+27823009834">
+              
+              +27823009834
+            </a>
+          </p>
+          <p>
+            <span class = "highlight"><i class="fas fa-crosshairs"></i>Position:  </span>
             {{position.title}}
           </p>
           <div>
@@ -41,6 +43,9 @@
             </a>
           </div>
         </div>
+        <div class="column is-two-fifths">
+          <user-badges />
+        </div>
       </div>
     </div>
 
@@ -52,7 +57,9 @@
 
 <style lang="scss" scoped>
 .header{
-  padding: 1rem 0;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
+  margin-bottom: 2rem;
 
   .ppic{
     padding: 1rem 2rem;
@@ -64,10 +71,15 @@
 
   .details{
     .title{
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
+    .highlight{
+      color: #30343f;
+      font-weight: 700;
+    }
+
     p{
-      font-size: 1em;
+      font-size: 0.9em;
       i{
         padding-right: 0.5rem;
       }
@@ -87,11 +99,13 @@
 
 import KudosModal from "~/components/user/KudosModal";
 import RecommendModal from "~/components/user/RecommendModal";
+import UserBadges from "~/components/user/UserBadges";
 
 export default {
   components: {
     KudosModal,
-    RecommendModal
+    RecommendModal,
+    UserBadges,
   },
   props: ["user","position"],
   mounted:function(){

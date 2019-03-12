@@ -12,9 +12,10 @@ $size-5:1.15rem;
 $size-6:0.9rem;
 $size-7:0.65rem;
 
-//card
-$card-header-background-color: #30343f;
-$card-header-color: #fff;
+// card
+$card-header-background-color: #eceff1;
+$card-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
+// $card-header-color: #fff;
 
 @import '~bulma';
 @import 'pagination';

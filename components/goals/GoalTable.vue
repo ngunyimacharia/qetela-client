@@ -27,7 +27,7 @@
       <p>{{props.row.description}}</p>
       <b>Key Performance Indicators</b>
       <ul>
-        <li v-for="kpi in props.row.kpiSet" :key="">
+        <li v-for="kpi in props.row.kpiSet" :key="kpi.id">
           <div class="columns">
             <div class="column is-two-fifth">
               {{ getKpiText( kpi )}}

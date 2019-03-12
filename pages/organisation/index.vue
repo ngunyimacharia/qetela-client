@@ -5,6 +5,7 @@
       :title="organisation.name"
       description="Manage your organisation details, levels, teams, positions and users"
       :heroNavItems="heroNavItems"
+      image="/images/icons/enterprise.png" 
       >
     </hero-nav>
   </section>

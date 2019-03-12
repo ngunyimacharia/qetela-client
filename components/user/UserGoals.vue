@@ -11,7 +11,7 @@
         <div class="none" v-if="!goals.length">
           No goals assigned
         </div>
-        <div class="columns" v-for="goal in goals">
+        <div class="columns" v-for="goal in goals" :key="goal.id">
           <div class = "column is-two-thirds">
             <nuxt-link :to="'/goals/'+goal.id+'/view/'">{{goal.title}}</nuxt-link>
           </div>

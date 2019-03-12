@@ -11,7 +11,7 @@
         <div class="none" v-if="!sessions.length">
           No onboarding buddy sessions assigned
         </div>
-        <div class="columns" v-for="session in sessions">
+        <div class="columns" v-for="session in sessions" :key="session.id">
           <div class = "column is-two-thirds">
             <p>{{session.kitTitle}}</p>
             <p><b>Assigned:</b>&nbsp;{{ getUser(session.user.username) }}</p>

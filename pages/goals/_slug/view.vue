@@ -1,19 +1,17 @@
 <template>
 
-  <div class="columns" v-if="goal">
+  <div class="columns is-gapless" v-if="goal">
     <div class="column is-three-quarters">
-      <div class="container">
         <goal-header :goal="goal" />
 
         <div class="columns">
-          <div class="column">
+          <div class="column padded">
             <goal-kpis :goal="goal" />
             <br/>
             <goal-alignment :goal="goal" />
           </div>
           <div class="column"></div>
         </div>
-      </div>
     </div>
     <div class="column is-one-quarter">
       <goal-sidebar :goal="goal" />
@@ -23,7 +21,9 @@
 </template>
 
 <style lang="scss">
-
+  .padded{
+    padding: 1rem 2rem;
+  }
 </style>
 
 <script>

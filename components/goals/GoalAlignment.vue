@@ -8,7 +8,7 @@
     </header>
     <div class="card-content">
       <div class="content">
-        <p v-for="(goal,index) in hierarchy" class="goal">
+        <p v-for="(goal,index) in hierarchy" :key="index" class="goal">
           <i class="fas fa-bullseye is-hidden-mobile"></i>
           <b>#{{index+1}}</b>
           <nuxt-link :to="'/goals/' + goal.id + '/view/'">{{goal.title}}</nuxt-link>
@@ -50,6 +50,13 @@
         display: none;
       }
   }
+  
+  .card{
+    .content{
+      font-size: 0.9em;
+    }
+  }
+  
 </style>
 
 <script>

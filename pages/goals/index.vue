@@ -1,8 +1,11 @@
 <template>
   <section id="goals">
-    <hero-nav title="Goal setting and alignment" description="Set, align and audit goals within your organisation" :heroNavItems="heroNavItems">
-    </hero-nav>
-
+    <hero-nav 
+      title="Goal setting and alignment" 
+      description="Set, align and audit goals within your organisation" 
+      :heroNavItems="heroNavItems"
+      image="/images/icons/mountain.png"  
+    />
     <section>
       <NuxtChild />
     </section>
@@ -26,8 +29,8 @@ export default {
     return {
       heroNavItems:[
         {name:"Personal",target:"/goals/personal",active:true},
-        {name:"Organisation",target:"/goals"},
         {name:"Teams",target:"/goals/teams"},
+        {name:"Organisation",target:"/goals"},
       ]
     };
   },

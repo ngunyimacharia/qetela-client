@@ -29,6 +29,7 @@
 
 <style lang="scss">
 .tasks-cont{
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.1),0 6px 24px 0 rgba(0,0,0,.04);
   // background: #EDECEE !important;
 
   .pending{

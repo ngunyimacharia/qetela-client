@@ -8,7 +8,7 @@
     </header>
     <div class="card-content">
       <div class="content">
-        <div v-for="kpi in goal.kpiSet" :key="">
+        <div v-for="kpi in goal.kpiSet" :key="kpi.id">
           <div class="columns">
             <div class="column is-two-fifth">
               {{ getKpiText( kpi )}}
@@ -32,8 +32,12 @@
 
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+  .card{
+    .content{
+      font-size: 0.9em;
+    }
+  }
 </style>
 
 <script>
