@@ -53,11 +53,11 @@
                   </span>
                 </p>
               </div>
-              <div class="field" v-if="randomUser">
+              <div class="field">
                 <p class="is-size-7 has-text-left">
                   Try the following credentials:
                   <br/>
-                  <b>Username:</b> {{randomUser.email}}
+                  <b>Email:</b> naledi@puletech.co.za
                   <br/>
                   <span v-if="successfulUsername"><b>Password:</b> password</span>
                 </p>
@@ -91,21 +91,21 @@
 import gql from 'graphql-tag';
 import { error } from 'util';
 
-const randUserQuery = gql`query{
-            randomUser{
-              email
-            }
-          }`
+// const randUserQuery = gql`query{
+//             randomUser{
+//               email
+//             }
+//           }`
 
 export default {
-  asyncData({app,route,store}){
-      // but you could also call queries like this:
-      return app.apolloProvider.defaultClient.query({query:randUserQuery, variables:{}})
-        .then(({ data }) => {
-          // do what you want with data
-          return data
-        }).catch((err)=>console.log(err))
-  },
+  // asyncData({app,route,store}){
+  //     // but you could also call queries like this:
+  //     return app.apolloProvider.defaultClient.query({query:randUserQuery, variables:{}})
+  //       .then(({ data }) => {
+  //         // do what you want with data
+  //         return data
+  //       }).catch((err)=>console.log(err))
+  // },
   data() {
     return {
       isAuthenticated:false,
