@@ -13,6 +13,7 @@
 <style lang="scss" scoped>
 
     .user-badges{
+        height: 100%;
         .top{
             margin: 0.2rem 0;
             display: flex;
@@ -41,6 +42,8 @@
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
+            height: 90%;
+            align-content: center;
         }
     }
 
@@ -62,13 +65,13 @@ export default {
     return {
         badges:[
             {title:'Sales Hero'},
-            {title:"Early Rise"},
+            // {title:"Early Rise"},
             {title:"Green Initiative"},
-            {title:"Buddy Hero"},
+            // {title:"Buddy Hero"},
             {title:"Culture Champion"},
-            {title:"Happy Helper"},
-            {title:"Proactive Hero"},
-            {title:"Onboarding Newbie"}
+            // {title:"Happy Helper"},
+            // {title:"Proactive Hero"},
+            // {title:"Onboarding Newbie"}
         ]
     }
   },
