@@ -28,7 +28,7 @@
             <span class = "highlight"><i class="fas fa-crosshairs"></i>Position:  </span>
             {{position.title}}
           </p>
-          <div>
+          <div v-if="!isOwner()">
             <a class="button is-info is-outlined" :disabled="isOwner()" v-on:click="toggleModal('kudos')">
               <span class="icon">
                 <i class="fas fa-thumbs-up"></i>
