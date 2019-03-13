@@ -224,6 +224,7 @@ export default {
           { name: 'Goals', target:"/goals/personal", icon:"fas fa-bullseye fa-lg" },
           { name: 'Reviews',target:"/reviews", icon:"far fa-clipboard fa-lg" },
           { name: 'Onboarding',target:"/onboarding/sessions",icon:"far fa-handshake fa-lg" },
+          { name: 'Reports',target:"/reports", icon:"fas fa-chart-pie" },
         ]
         if(this.$store.getters['user/USER']){
           menu.push(

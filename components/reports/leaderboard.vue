@@ -1,6 +1,6 @@
 <template>
   <div class="leaderboard">
-    <div class="title"><h3>Team Leaderboard</h3></div>
+    <div class="title"><h3><strong>Organisation Leaderboard:</strong> Top Performers</h3></div>
     <div class = "columns has-text-centered" v-for="(user,index) in users" :key="user.id" >
       <div class="column"><img :src = "user.ppic" class="image is-32x32 is-rounded" /> </div>
       <div class="column is-half has-text-left"><span class="no">{{index+1}}.</span> {{user.firstName}} {{user.lastName}}<div class="border" v-bind:style="getBorder(index)"></div></div>
@@ -18,7 +18,7 @@
     background: #30343f;
     color: #fff;
     font-weight: 500;
-    padding: 0 0 3rem;
+    padding: 0 0;
 
     .title{
       text-align: center;
@@ -29,9 +29,13 @@
         color:#fff;
         font-size: 0.5em;
         padding: 0.7rem 0 0;
-        font-weight: 600;
+        font-weight: normal;
+        strong{
+            font-weight: 600;
+        }
       }
     }
+    
     .columns{
       padding: 0;
       margin: 0;
