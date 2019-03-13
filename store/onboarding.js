@@ -80,6 +80,7 @@ function computeSessionStatus(state,session){
 export const mutations = {
   SET_KITS(state, kits) {
     state.kits = kits
+    state.sessions = []
     for(let kit of state.kits){
       for(let session of kit.sessionSet){
         session.kitTitle = kit.title
@@ -117,6 +118,7 @@ export const mutations = {
   },
   DEL_KITS(state){
     state.kits = []
+    state.sessions = []
   }
 }
 
