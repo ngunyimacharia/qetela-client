@@ -64,12 +64,12 @@ export default {
   data() {
     return {
         badges:[
-            {title:'Sales Hero'},
+            // {title:'Sales Hero'},
             // {title:"Early Rise"},
             {title:"Green Initiative"},
             // {title:"Buddy Hero"},
             {title:"Culture Champion"},
-            // {title:"Happy Helper"},
+            {title:"Happy Helper"},
             // {title:"Proactive Hero"},
             // {title:"Onboarding Newbie"}
         ]
